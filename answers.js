@@ -8,7 +8,7 @@ let myName = 'Nathan';
 // console.log(`Before: myName = ${myName}, myNumber = ${myNumber}`);
 let temp = myNumber;
 myNumber = myName;
-myName = temp; 
+myName = temp;
 // console.log(`After: myName = ${myName}, myNumber = ${myNumber}`);
 
 /*
@@ -47,7 +47,7 @@ for (let i = -300; i < 1; i++) {
 􀀂 Printing Integers with While
 Print integers from 2000 to 5280, using a WHILE.
 */
-let count = 2000; 
+let count = 2000;
 
 while(count < 5281){
     // console.log(count);
@@ -61,7 +61,7 @@ and day in either order, log "How did you
 know?", else log "Just another day...."
 */
 const isItMyBDay = (bMonth, bDay, a, b) => {
-   let resp = (a == bMonth && b == bDay) || (a == bDay && b ==bMonth) ? 
+   let resp = (a == bMonth && b == bDay) || (a == bDay && b ==bMonth) ?
    "How did you know?" : "Just another day....";
     console.log(resp);
 }
@@ -78,15 +78,15 @@ it is a leap year, unless it is divisible by 100.
 However, if it is divisible by 400, then it is.
 */
 const isLeapYear = (year) => {
-    if (year % 4 == 0) { 
+    if (year % 4 == 0) {
         if (year % 100 == 0) {
             if (year % 400 == 0) {
-                return true; 
+                return true;
             }
             return false;
-        } 
-        return true; 
-    } 
+        }
+        return true;
+    }
     return false;
 }
 
@@ -113,7 +113,7 @@ for (let i = 512; i < 4097; i++) {
 􀀂 Multiples of Six
 Print multiples of 6 up to 60,000, using a WHILE.
 */
-let cnt = 0; 
+let cnt = 0;
 while (cnt <= 60000) {
     if (cnt % 6 == 0) {
         // console.log(cnt);
@@ -130,7 +130,7 @@ for (let i = 1; i <= 100; i++) {
     if (i % 5 == 0) {
         // console.log("Coding");
         if (i % 10 == 0) {
-            // console.log("Dojo"); 
+            // console.log("Dojo");
         }
     } else {
         // console.log(i);
@@ -146,7 +146,7 @@ const printMe = (incoming) => {
     console.log(incoming);
 };
 
-// printMe('testng'); 
+// printMe('testng');
 
 /*
 􀀂 Whoa, That Sucker’s Huge…
@@ -154,7 +154,7 @@ Add odd integers from -300,000 to 300,000, and
 console.log the final sum. Is there a shortcut?
 */
 
-// slow way 
+// slow way
 let sum = 0;
 for (let i = -300000; i < 300000; i++) {
     if (i % 2 != 0) {
@@ -164,11 +164,11 @@ for (let i = -300000; i < 300000; i++) {
 // console.log(sum);
 
 // shortcut
-let tmp = 300000/2 
+let tmp = 300000/2
 let pos_sum = temp * temp;
 let neg_sum = -pos_sum
 let master_sum = pos_sum + neg_sum;
-// console.log(master_sum); 
+// console.log(master_sum);
 
 /*
 􀀂 Countdown by Fours
@@ -178,8 +178,8 @@ down by fours (exclude 0), without a FOR loop.
 const countDownByFour = (num) => {
     console.log(num);
     if (num > 4) {
-        return downByFour(num - 4); 
-    } else return; 
+        return downByFour(num - 4);
+    } else return;
 }
 
 // countDownByFour(2016);
@@ -194,7 +194,7 @@ For (2,9,3), print 9 6 3 (on successive lines).
 const countDownRangeByMult = (lowNum,highNum, mult) => {
     for (; highNum % mult != 0; highNum--);
     for (; highNum >= lowNum; highNum-=mult) {
-            console.log(highNum); 
+            console.log(highNum);
         }
 }
 
@@ -211,13 +211,13 @@ multiple is equal to param4, then skip (don’t print) it. Do this using a WHILE
 const countUpRangeByMultAndExclude = (mult, low, high, exclude) => {
 
     while (low % mult != 0 ) {
-        low++; 
+        low++;
     }
     while (low <= high) {
         if (low != exclude){
             console.log(low);
         }
-        low+= mult; 
+        low+= mult;
     }
 }
 
@@ -237,7 +237,7 @@ const makeArray = (number) => {
 }
 
 let array = makeArray(10);
-// console.log(`The array ${array} has ${array.length} elements`); 
+// console.log(`The array ${array} has ${array.length} elements`);
 
 /*
 􀀂 Print and Return
@@ -247,15 +247,15 @@ const printFirstReturnSecond = (arr) => {
     if (arr.length > 2) {
         return 'The array must be of length 2!';
     }
-    console.log(`Logged: ${arr[0]}`); 
-    return arr[1]; 
+    console.log(`Logged: ${arr[0]}`);
+    return arr[1];
 }
 
 // let result1 = printFirstReturnSecond([3,4]);
-// let result2 = printFirstReturnSecond([3,4,5]); 
+// let result2 = printFirstReturnSecond([3,4,5]);
 
 // console.log(`Returned: ${result1}`);
-// console.log(result2); 
+// console.log(result2);
 
 /*
 􀀂 First Plus Length
@@ -283,7 +283,7 @@ const greaterThanSec = (arr) => {
             count++;
         }
     });
-    return count; 
+    return count;
 }
 
 // let res = greaterThanSec([1,3,5,7,9,13]);
@@ -294,17 +294,68 @@ const greaterThanSec = (arr) => {
 Write a function that accepts any array, and returns a new array with the array values that are greater
 than its 2nd value. Print how many values this is. What will you do if the array is only one element long?
 */
+const arrayGreaterThanSec = (arr) => {
+
+    if (arr.length < 2) {
+        console.log('the array must have at least 2 elements!');
+        return arr;
+    }
+
+    let arr2 = [];
+    let sec = arr[1];
+    arr.forEach((num)=> {
+        if (num > sec) {
+            arr2.push(num);
+        }
+    });
+    return arr2;
+}
+
+let array2 = arrayGreaterThanSec([9,6,8,2,4,3,12]);
+// console.log(array2.length);
 
 /*
 􀀂 This Length, That Value
 Given two numbers, return array of length num1 with each value num2. Print "Jinx!" if they are same.
 */
+const thisLengthThatValue = (num1, num2) => {
+    let arr = []; 
+
+    for (; num1 > 0; num1--) {
+        arr.push(num2);
+    }
+
+    if (num1 == num2) {
+        console.log("Jinx!");
+    }
+
+    return arr; 
+}
+
+let array3 = thisLengthThatValue(5,2); 
+// console.log(array3);
 
 /*
 􀀂 Fit the First Value
 Your function should accept an array. If value at [0] is greater than array’s length, print "Too big!";
 if value at [0] is less than array’s length, print "Too small!"; otherwise print "Just right!".
 */
+const goldilocks = (arr) => {
+    let len = arr.length;
+    let val = arr[0]; 
+
+    if (val > len) {
+        console.log("Too big!");
+    } else if (val < len) {
+        console.log("Too small!"); 
+    } else {
+        console.log("Just right!"); 
+    }
+}
+
+// goldilocks([1,2,3]);
+// goldilocks([5,4,3]); 
+// goldilocks([5,4,3,2,1]);
 
 /*
 􀀂 Fahrenheit to Celsius
@@ -312,6 +363,11 @@ Kelvin wants to convert between temperature scales. Create fahrenheitToCelsius(f
 that accepts a number of degrees in Fahrenheit, and returns the equivalent temperature as expressed
 in Celsius degrees. For review, Fahrenheit = (9/5 * Celsius) + 32.
 */
+const fahrenheitToCelsius = (fDegrees) => {
+    return (fDegrees - 32) / (9/5) 
+}
+
+// console.log(fahrenheitToCelsius(98)); 
 
 /*
 􀀂 Celsius to Fahrenheit
@@ -321,6 +377,12 @@ the equivalent temperature expressed in Fahrenheit degrees.
 complex, so for this challenge just try a series of Celsius integer values starting at 200, going downward
 (descending), checking whether it is equal to the corresponding Fahrenheit value.
 */
+const celsiusToFahrenheit = (cDegrees) => {
+    return (9/5 * cDegrees) + 32;
+}
+
+// console.log(celsiusToFahrenheit(36.67));
+
 
 /*
 􀀂 Biggie Size
@@ -329,6 +391,17 @@ positive numbers in the array to “big”. Example:
 makeItBig([-1,3,5,-5]) returns that same
 array, changed to [-1,"big","big",-5].
 */
+const makeItBig = (arr) => {
+   return arr.map((num)=> {
+        if (num > 0) {
+            return "big";
+        } else {
+            return num;
+        }
+    });
+}
+
+// console.log(makeItBig([-1,2,3,-4,5]));
 
 /*
 􀀂 Print Low, Return High
@@ -336,12 +409,34 @@ Create a function that takes array of numbers.
 The function should print the lowest value in the
 array, and return the highest value in the array.
 */
+const printLowReturnHigh = (arr) => {
+    arr.sort((a,b) => a -b);
+    
+    console.log(arr[0]);
+
+    return(arr[arr.length -1]); 
+}
+
+// console.log(printLowReturnHigh([3,7,1,9,8,3,0,3,8,7]))
 
 /*
 􀀂 Print One, Return Another
 Build a function that takes array of numbers. The
 function should print second-to-last value in the
 array, and return first odd value in the array.
+*/
+const printOneReturnAnother = (arr) => {
+    console.log(arr[arr.length - 2]); 
+    let firstOdd = 0; 
+
+    for (num of arr) {
+        if (num % 2 != 0) {
+            return num;
+        }
+    }
+}
+
+// console.log(printOneReturnAnother([2,2,3,5,5,6,7,12,9]));
 
 /*
 􀀂 Double Vision
@@ -350,6 +445,13 @@ array where each value in the original has been
 doubled. Calling double([1,2,3]) should
 return [2,4,6] without changing original.
 */
+const double = (arr) => {
+    return arr.map( x => x*2); 
+}
+
+let testArr = [3,4,7,6,5,1,8,9];
+// console.log(double(testArr)); 
+// console.log(testArr);
 
 /*
 􀀂 Count Positives
@@ -358,6 +460,15 @@ replace last value with number of positive values.
 Example, countPositives([-1,1,1,1])
 changes array to [-1,1,1,3] and returns it.
 */
+const replaceLast = (arr) => {
+    let arr2 = arr.filter(num => num > 0);
+    let len = arr2.length; 
+    arr[arr.length - 1] = len; 
+
+    return arr; 
+}
+
+// console.log(replaceLast([-1,1,1,1]));
 
 /*
 􀀂 Evens and Odds
@@ -366,12 +477,39 @@ time that array has three odd values in a row,
 print "That’s odd!" Every time the array has
 three evens in a row, print "Even more so!"
 */
+const evensAndOdds = (arr) => {
+       let odds = 0; 
+       let evens = 0;
+
+       for (num of arr) {
+           if (num % 2 != 0 ) {
+               evens = 0;
+               if (odds == 2) {
+                   console.log("That's Odd!");
+                   odds = 0;
+               } else {
+                   odds++; 
+               }
+           } else {
+               odds = 0; 
+               if (evens == 2) {
+                   console.log("Even more so!");
+                   evens = 0;
+               } else {
+                   evens++;
+               }
+           }
+       }
+}
+
+console.log(evensAndOdds([1,1,1,2,2,2,3,3,4,4,5,5,5,6,6,6]))
 
 /*
 􀀂 Increment the Seconds
 Given arr, add 1 to odd elements ([1], [3],
 etc.), console.log all values and return arr.
 */
+
 
 /*
 􀀂 Previous Lengths
