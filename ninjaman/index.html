@@ -25,6 +25,15 @@
             background-size: contain;
 
         }
+        .onigiri {
+            background-color: black;
+            height: 40px;
+            width: 40px;
+            display: inline-block;
+            background-image: url('onigiri.png');
+            background-size: contain;
+
+        }
         .blank {
             background-color: black;
             height: 40px;
@@ -42,27 +51,46 @@
             left: 40px;
             top: 40px;
         }
+        #score {
+            background-color: white;
+            height: 40px;
+            width: 80px;
+            display: inline-block;
+            background-size: contain;
+            position: absolute;
+            left: 0px;
+            top: 400px;
+        }
     </style>
 </head>
 <body>
     <div id='world'></div>
     <div id='ninjaman'></div>
+    <div id='score'></div>
 </body>
 
     <script type="text/javascript">
         let world = [
-            [1,1,1,1,1],
-            [1,0,2,2,1],
-            [1,2,1,2,1],
-            [1,2,2,2,1],
-            [1,1,1,1,1]
+            [1,1,1,1,1,1,1,1,1,1],
+            [1,0,2,2,2,3,2,2,3,1],
+            [1,2,2,2,1,1,2,2,2,1],
+            [1,2,3,2,1,1,2,2,2,1],
+            [1,2,2,2,1,1,2,2,2,1],
+            [1,2,2,2,1,1,3,3,2,1],
+            [1,2,3,2,1,1,2,2,2,1],
+            [1,2,2,2,1,1,2,2,2,1],
+            [1,2,2,2,2,2,3,2,3,1],
+            [1,1,1,1,1,1,1,1,1,1]
         ];
         
         let worldDict = {
             0: 'blank', 
             1: 'wall',
-            2: 'sushi'
+            2: 'sushi',
+            3: 'onigiri'
         }
+
+        let score = 0; 
 
         const drawWorld = () => {
             let output = ""; 
@@ -75,6 +103,7 @@
                 output += "</div>";
             }
             document.getElementById('world').innerHTML = output;
+            document.getElementById('score').innerHTML = `Score: ${score}`; 
         }
         drawWorld();
 
@@ -110,6 +139,12 @@
                 }
             }
             drawNinjaMan();   
+
+            if (world[ninjaman.y][ninjaman.x] == 2) {
+                score += 10; 
+            } else if (world[ninjaman.y][ninjaman.x] == 3) {
+                score += 5; 
+            }
             world[ninjaman.y][ninjaman.x] = 0; 
             drawWorld();
     	}
