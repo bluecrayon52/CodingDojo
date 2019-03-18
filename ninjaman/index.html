@@ -53,7 +53,7 @@
         let world = [
             [1,1,1,1,1],
             [1,0,2,2,1],
-            [1,2,0,2,1],
+            [1,2,1,2,1],
             [1,2,2,2,1],
             [1,1,1,1,1]
         ];
@@ -77,5 +77,41 @@
             document.getElementById('world').innerHTML = output;
         }
         drawWorld();
+
+        const drawNinjaMan = () => {
+            document.getElementById("ninjaman").style.left = 40*ninjaman.x+"px";
+    		document.getElementById("ninjaman").style.top = 40*ninjaman.y+"px";
+        }
+
+        let ninjaman = {
+            x: 1,
+            y: 1
+        }
+
+        document.onkeydown = (e) => {
+            if(e.keyCode == 37 ) { // LEFT 
+                if (world[ninjaman.y][ninjaman.x - 1] != 1) {
+                    ninjaman.x--;
+                }
+    		}
+            else if (e.keyCode == 39) { // RIGHT
+                if (world[ninjaman.y][ninjaman.x + 1] != 1) {
+                    ninjaman.x++;
+                }
+    		}
+            else if (e.keyCode == 40) { // DOWN
+                if (world[ninjaman.y + 1][ninjaman.x] != 1) {
+                    ninjaman.y++;
+                }
+    		}
+            else if (e.keyCode == 38) { // UP
+                if (world[ninjaman.y - 1][ninjaman.x] != 1) {
+                    ninjaman.y--;
+                }
+            }
+            drawNinjaMan();   
+            world[ninjaman.y][ninjaman.x] = 0; 
+            drawWorld();
+    	}
     </script>
 </html>
