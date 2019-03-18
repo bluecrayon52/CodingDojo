@@ -509,7 +509,28 @@ const evensAndOdds = (arr) => {
 Given arr, add 1 to odd elements ([1], [3],
 etc.), console.log all values and return arr.
 */
+const addOneToOddIndex = (arr) => {
+   for (index in arr) {
+       if (index % 2 != 0) {
+           arr[index] += 1; 
+       }
+   }
 
+   return arr;
+}
+
+const addOneToOddElement = (arr) => {
+    for (index in arr) {
+        if (arr[index] % 2 != 0) {
+            arr[index] += 1; 
+        }
+    }
+
+    return arr; 
+}
+
+// console.log("Odd index:"+ addOneToOddIndex([1,2,3,4,5,6]));
+// console.log("Odd element:"+ addOneToOddElement([1,2,3,4,5,6]));
 
 /*
 􀀂 Previous Lengths
@@ -518,6 +539,18 @@ Working within that same array, replace each
 string with a number – the length of the string at
 previous array index – and return the array.
 */
+const prevLength = (arr) => {
+    let prev = 0; 
+
+    for (i in arr) {
+        let temp = arr[i].length; 
+        arr[i] = prev; 
+        prev = temp; 
+    }
+    return arr; 
+}
+
+// console.log(prevLength(["I", "feel", "pretty", "oh", "so", "pretty"]));
 
 /*
 􀀂 Add Seven to Most
@@ -525,6 +558,14 @@ Build function that accepts array. Return a new
 array with all values except first, adding 7 to
 each. Do not alter the original array.
 */
+const addSevenToMost = (arr) => {
+    arr.shift();
+    return arr.map(num => num + 7);
+}
+
+let original = [1,2,3,4,5];
+// console.log(addSevenToMost(original));
+// console.log(original);
 
 /*
 􀀂 Reverse Array
@@ -532,6 +573,13 @@ Given array, write a function to reverse values,
 in-place. Example: reverse([3,1,6,4,2])
 returns same array, containing [2,4,6,1,3].
 */
+const reverseArray = (arr) => {
+    arr.reverse();
+}
+
+let testArr2 = [1,2,3,4,5,6,7,8];
+// reverseArray(testArr2);
+// console.log("Reversed: " + testArr2);
 
 /*
 􀀂 Outlook: Negative
@@ -540,7 +588,20 @@ containing all the values of the provided array,
 made negative (not simply multiplied by -1).
 Given [1,-3,5], return [-1,-3,-5].
 */
+const makeNegative = (arr) => {
+    return arr.map(num => {
+        if (num < 0){
+            return num;
+        } else {
+            return num*-1
+        }
+    });
+}
 
+let testArr3 = [1,2,-3,4,-5]; 
+let res2 = makeNegative(testArr3);
+// console.log('New: ' + res2);
+// console.log('Original: ' + testArr3);
 /*
 􀀂 Always Hungry
 Create a function that accepts an array, and
@@ -548,6 +609,24 @@ prints "yummy" each time one of the values is
 equal to "food". If no array elements are
 "food", then print "I'm hungry" once.
 */
+const eatFood = (arr) => {
+    let count = 0; 
+    for (thing of arr) {
+        if (thing == 'food') {
+            count++;
+            console.log('yummy');
+        }
+    }
+    if (count == 0) {
+        console.log("I'm hungry");
+    }
+}
+
+let testArr4 = ['food', 'rocks', 2, true, 'sand', 'food'];
+let testArr5 = ['other', 'candy', 5, 6, false]; 
+
+// eatFood(testArr4);
+// eatFood(testArr5);
 
 /*
 􀀂 Swap Toward the Center
@@ -556,9 +635,33 @@ etc. Input[true,42,"Ada",2,"pizza"]
 becomes ["pizza",42,"Ada",2,true].
 Change [1,2,3,4,5,6] to [6,2,4,3,5,1].
 */
+const swap = (arr) => {
+    let last = arr.length - 1; 
+    for(i in arr) {
+        if (i % 2 == 0 && i < last - i) {
+            let temp = arr[i];
+            arr[i] = arr[last - i];
+            arr[last - i] = temp; 
+        }
+    }
+}
+
+let arr3 = [true,42,"Ada",2,"pizza"];
+let arr4 = [1,2,3,4,5,6];
+
+swap(arr3);
+swap(arr4);
+
+// console.log(arr3);
+// console.log(arr4);
 
 /*
 􀀂 Scale the Array
 Given array arr and number num, multiply each
 arr value by num, and return the changed arr.
 */
+const scaleArr = (arr, num) => {
+    return arr.map(val => val*num); 
+}
+
+// console.log(scaleArr([3,4,5,6,7], 5));
