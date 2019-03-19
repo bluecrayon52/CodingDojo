@@ -1,0 +1,71 @@
+/* CSS minimal reset */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#wrap {
+    width: 1165px;
+    padding: 10px;
+    /* browser calcs margin  */
+    margin: 0px auto; 
+    background-color: #1b345d; 
+    color: #c2d6ec;
+}
+
+#head {
+    padding: 20px 15px;
+    background-color: #cf3036; 
+    border-radius: 10px;
+}
+
+#nav {
+    padding: 20px 15px;
+    background-color: #2a7d8c;
+    display: inline-block; 
+    margin-top: 15px;
+    margin-right: 20px;
+    border-radius: 15px;
+    width: 170px;
+}
+
+ul > li {
+    margin-left: 15px;
+}
+
+a:link {
+    color: #61d3d7;
+}
+
+#main {
+    padding: 20px 15px;
+    background-color: #0e1822; 
+    display: inline-block;
+    margin-top: 15px;
+    border-radius: 15px;
+    vertical-align: top;
+    width: 910px; 
+}
+
+h2 {
+    margin-top: 10px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+span {
+    color:#7388f7;
+}
+
+#foot {
+    padding: 20px;
+    background-color: #5d6673;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+
+.no_margin {
+    margin: 0px;
+}
