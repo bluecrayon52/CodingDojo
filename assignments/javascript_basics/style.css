@@ -5,12 +5,14 @@
 }
 
 #wrap {
-    width: 1165px;
+    /* width: 1165px; */
+    width: 970px; 
     padding: 10px;
     /* browser calcs margin  */
     margin: 0px auto; 
-    background-color: #1b345d; 
+    background-color:#1b345d; 
     color: #c2d6ec;
+    font-size: 13px;
 }
 
 #head {
@@ -20,13 +22,13 @@
 }
 
 #nav {
-    padding: 20px 15px;
+    padding: 15px 15px;
     background-color: #2a7d8c;
     display: inline-block; 
     margin-top: 15px;
     margin-right: 20px;
     border-radius: 15px;
-    width: 170px;
+    width: 140px;
 }
 
 ul > li {
@@ -38,13 +40,13 @@ a:link {
 }
 
 #main {
-    padding: 20px 15px;
+    padding: 15px 15px 5px;
     background-color: #0e1822; 
     display: inline-block;
     margin-top: 15px;
     border-radius: 15px;
     vertical-align: top;
-    width: 910px; 
+    width: 745px; 
 }
 
 h2 {
