@@ -1,15 +1,14 @@
-* { outline: 1px dotted red; }
-/* *{
+/* * { outline: 1px dotted red; } */
+*{
     margin: 0px;
     padding: 0px;
-} */
+}
 
 .wrap {
     margin: 0 auto;
     width: 970px;
     background-color: #245076;
     font-family: Arial, Helvetica, sans-serif;
-    /* font-weight: lighter; */
 }
 
 .head {
@@ -24,7 +23,7 @@
 
     .text_size {
         color: white;
-        margin-left: 85px;
+        margin-left: 120px;
     }
 
     .gold {
@@ -36,21 +35,22 @@
     }
 
     .search_holder {
-        margin: 10px 0 0 320px;
+        margin: 10px 0 0 260px;
         font-size: 13px;
         display: inline-block;
     }   
         .search_bg {
-            padding: 12px 30px;
+            padding: 12px 40px;
             background-color: #444444;
             margin-top: 5px;
+            margin-right: 10px;
             box-shadow: 2px 2px #262626;
             border-radius: 7px;
         }
 
             .search_input {
-                height: 30px;
-                width: 150px;
+                height: 35px;
+                width: 180px;
                 border: 2px solid silver;
                 border-style: outset;
                 text-align: center;
@@ -73,7 +73,6 @@
     margin: 0 0 0 87px;
     background-image: linear-gradient(to bottom, #3575ad,#487fad,#3575ad);
     color: white;
-    /* text-align: center; */
     box-shadow: 2px 2px #262626;
     border-radius: 7px;
 }
@@ -88,16 +87,30 @@
     text-align: center;
     display: inline-block;
     vertical-align: top;
-    margin: 15px 20px 0 100px;
+    margin: 20px 20px 0 100px;
     color:white;
 }
-    .side_opt {
-        margin: 10px;
+    .side_list {
+        list-style-type: none;
+        display: inline-block;
+        margin: 0;
     }
+        .side_opt {
+            margin-top: 11px;
+        }
 
-    a {
-        color: inherit;
-    }
+        .side_opt::before {
+            content: "\00bb"; 
+            color: #ffd42e;
+            display: inline-block;
+            vertical-align: top;
+            width: 20px; 
+            font-size: 12px;
+        }
+
+        a {
+            color: inherit;
+        }
 
 .main {
     color: white;
@@ -108,24 +121,28 @@
     margin: 0 20px 0 0;
 }   
     .main_txt {
-        font-size: 14px;
+        font-size: 13.8px;
         padding: 0 12px;
+        /* margin-top: 5px;
+        margin-bottom: 6px; */
+        margin: 20px 0 7px 0;
     }
 
     .zen {
         list-style-type: none;
-        font-size: 18px;
+        font-size: 19px;
         font-style: italic;
-
+        margin-top: 0;
     }
 
         .zen_txt {
-            margin-top: 10px;
+            margin-bottom: 11px;
         }
 
         .zen_foot {
             color: white;
             font-size: initial;
+            margin-bottom: 23px;
         }
 
 .btm_banner {
@@ -146,52 +163,52 @@
         border-left-style: none;
         border-right-style: none;
         border-color:  #73a7d5;
-        border-top-width: 5px;
+        border-top-width: 3px;
         padding: 5px;
     }
 
         .banner_head {
             margin: 0;
             padding: 0 30px 0 0;
-
+            font-weight:normal;
         }
 
         .pypl {
             color: #83b6e2;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .banner_txt {
-            font-size: 14px;
-            margin: 10px 0 0 0;
-            padding: 0 70px 0 20px;
+            font-size: 13px;
+            margin: 8px 0 0 0;
+            padding: 0 80px 0 30px;
         }
-
-        .bullets {
-            display: inline-block;
-            list-style-type: none;
-            margin: 0;
-        }
-
-            .blt::before {
-                content: "\25AA";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
-                color: black; /* Change the color */
-                display: inline-block; /* Needed to add space between the bullet and the text */
-                width: 20px; /* Also needed for space (tweak if needed) */
-            }
 
         .btm_ls {
             display: inline-block;
             vertical-align: top;
             color: #83b6e2;
-            margin-top: 3px;
-            font-size: 14px;
+            margin: 1.5px 60px 0 0;
+            font-size: 13px;
             padding: 0;
             list-style-type: none;
-
+            width: 220px;
         }
+
+        .bullets {
+            display: inline-block;
+            list-style-type: none;
+            margin: 3px 8px 0 40px;
+            padding: 0;
+            list-style: square;
+        }
+
+            .blt {
+                margin-top: 0;
+            }
+
             .list_item {
-                margin-bottom: 1.5px;
+                margin-top: 3px;
             }
 
 .foot {
@@ -203,13 +220,15 @@
 
     .foot_note {
         margin-top: 50px;
+        margin-left: 80px;
     }
 
         .foot_opt {
             display: inline-block;
-            margin: 0 20px;
+            margin: 0 40px 20px 0;
         }
 
         .cpyrt {
             font-size: 10px;
+            margin-bottom: 8px;
         }
