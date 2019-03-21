@@ -10,7 +10,6 @@
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
-
     .head {
     }
         .head img {
@@ -41,91 +40,159 @@
             padding-left: 18px;
         }
 
-.main {
-    min-height: 200px; 
-    background-image: linear-gradient(to bottom, #e3e3e3, white);
-}
-    .side_nav {
-        display: inline-block;
-        margin-top: 25px;
-        margin-left: 5px;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-        width: 190px;
-        border-bottom-style: solid;
-        border-top-style: none;
-        border-left-style: none;
-        border-right-style: none;
-        border-color: #9b9b9b;
-        border-width: 1px;
+    .main {
+        min-height: 200px; 
+        background-image: linear-gradient(to bottom, #e3e3e3, white);
     }
-        .question {
-            font-size: 16px;
-            font-weight: bold;
-        }
 
-            .question span {
-                color: #da241d;
+        .main .side_nav {
+            display:inline-block;
+            vertical-align: top;
+        }
+            .main .side_nav .side_main {
+                margin-top: 25px;
+                margin-left: 5px;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+                width: 190px;
+                border-bottom-style: solid;
+                border-top-style: none;
+                border-left-style: none;
+                border-right-style: none;
+                border-color: #9b9b9b;
+                border-width: 1px;
             }
-        
-        .answer {
-            font-size: 13px;
-            font-weight: bold;
-            margin-top: 12px;
-            margin-bottom: 20px;
+                .main .side_nav .side_main .question {
+                    font-size: 16px;
+                    font-weight: bold;
+                }
+
+                    .main .side_nav .side_main .question span {
+                        color: #da241d;
+                    }
+                
+                .main .side_nav .side_main .answer {
+                    font-size: 13px;
+                    font-weight: bold;
+                    margin-top: 12px;
+                    margin-bottom: 20px;
+                }
+                    .main .side_nav .side_main .answer span {
+                        color: #2b6aa1;
+                    }
+
+                .main .side_nav .side_main button {
+                    display: block;
+                    width: 190px;
+                    margin-bottom: 7px;
+                    padding: 7px 10px;
+                    font-size: 17px;
+                    color: white;
+                    border-radius: 6px;
+                    border-style: none;
+                    box-shadow: 3px 3px 1px #8e8e8e;
+                }
+
+                .main .side_nav .side_main .watch {
+                    background-image: linear-gradient(to bottom, #7da9ce, #23669e);
+                }
+
+                .main .side_nav .side_main .more {
+                    background-image: linear-gradient(to bottom, #ebae56, #ea7400);
+                }
+            
+            .main .side_nav .add {
+                margin-left: 5px;
+                width: 190px;
+                height: 280px;
+                background-image: url("./images/ad_background.png");
+                text-align: center;
+                padding-top: 20px;
+            }
+                .main .side_nav .add h2 {
+                    color: white;
+                    font-weight: normal;
+                    font-size: 23px;
+                }
+
+                .main .side_nav .add img {
+                    width: 90px;
+                    margin-bottom: 10px;
+                }
+
+                .main .side_nav .add button {
+                    font-size: 16px;
+                    padding: 5px 30px;
+                    color: white;
+                    border-radius: 6px;
+                    border-style: none;
+                    box-shadow: 3px 3px 1px #292929;
+                    background-image: linear-gradient(to bottom, #74c7d6, #00c0df);
+                }
+
+        .main .content {
+            display: inline-block;
+            margin-left: 48px;
         }
-            .answer span {
-                color: #2b6aa1;
+
+            .main .content .sub_head {
+                display: inline-block;
+                padding-bottom: 10px;
+                border-bottom-style: solid;
+                border-top-style: none;
+                border-left-style: none;
+                border-right-style: none;
+                border-color: #9b9b9b;
+                border-width: 1px;
             }
 
-        .side_nav button {
-            display: block;
-            width: 190px;
-            margin-bottom: 7px;
-            padding: 7px 10px;
-            font-size: 17px;
-            color: white;
-            border-radius: 6px;
-            border-style: none;
-            box-shadow: 3px 3px 1px #8e8e8e;
-        }
+                .main .content .sub_head img {
+                    width: 20px;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-top: 10px;
+                }
 
-        .side_nav .watch {
-            background-image: linear-gradient(to bottom, #7da9ce, #23669e);
-        }
+                .main .content .sub_head h4 {
+                    display: inline-block;
+                    vertical-align: top;
+                    font-weight: normal;
+                    color: #22649e;
+                    margin-left: 3px;
+                    margin-top: 14px;
+                }
 
-        .side_nav .more {
-            background-image: linear-gradient(to bottom, #ebae56, #ea7400);
-        }
-    
-    .add {
-        margin-left: 5px;
-        width: 190px;
-        height: 280px;
-        background-image: url("./images/ad_background.png");
-        text-align: center;
-        padding-top: 20px;
-    }
-        .add h2 {
-            color: white;
-            font-weight: normal;
-            font-size: 23px;
-        }
+                .main .content .sub_head .call {
+                    display: inline-block;
+                    margin-left: 430px;
+                }
+                    .main .content .sub_head .call img {
+                        width: 40px;
+                        display: inline-block;
+                        margin-right: 10px;
+                    }
 
-        .add img {
-            width: 90px;
-        }
+                    .main .content .sub_head .call div {
+                        display: inline-block;
+                    }
+                        .main .content .sub_head .call div p {
+                            color: #575757;
+                        }
 
-        .add button {
-            font-size: 16px;
-            margin-top: 10px;
-            padding: 5px 30px;
-            color: white;
-            border-radius: 6px;
-            border-style: none;
-            box-shadow: 3px 3px 1px #292929;
-            background-image: linear-gradient(to bottom, #74c7d6, #00c0df);
-        }
-    .content {
-        display: inline-block;
-    }
+                        .main .content .sub_head .call div .time {
+                            font-size: 11px;
+                            margin-bottom: 3px;
+                            margin-left: 6px;
+                        }
+
+                        .main .content .sub_head .call div span {
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: #00c0df;
+                        }
+
+                        .main .content .sub_head .call div .inat {
+                            font-size: 10px;
+                            margin-top: 5px;
+                            margin-left: 10px;
+                        }
