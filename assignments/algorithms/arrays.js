@@ -42,5 +42,22 @@ const shortenMe = ( arr, start, end) => {
 }
 // console.log( shortenMe([20,30,40,50,60,70],2,4));
 
+const shortenMeV2 = (arr, start, end) => {
+    let temp = []; 
+    for (let save = arr.length - (end + 1) ; save > 0; save--) {
+        temp.push(arr.pop());
+    }
+    for (let trash = end + 1 - start ; trash > 0; trash --) {
+        arr.pop();
+    }
+
+    for(num of temp) {
+        arr.push(temp.pop());
+    }
+
+    return arr;
+}
+// console.log(shortenMeV2([20,30,40,50,60,70],2,4));
+
 })();
 
