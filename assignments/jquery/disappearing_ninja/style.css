@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* outline: 1px dotted red;  */
+}
+
+.wrap {
+    width: 900px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    padding: 40px;
+    background-color: black;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.wrap img {
+    width: 150px;
+    margin: 20px;
+}
+
+.wrap button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 20px 40px;
+    border-radius: 7px;
+
+}
