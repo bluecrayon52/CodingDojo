@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JQuery Functions</title>
+    <meta name="JQuery Functions" content="Taking JQuery for a functional test drive">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./main.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1 class="head">JQuery Functions</h1>
+        <div class="body">
+            <div class="click">
+                <h1>.click</h1>
+                <p>
+                    The click event is sent to an element when the mouse pointer is over the element, 
+                    and the mouse button is pressed and released. Any HTML element can receive this event.
+                </p>
+                <p class="c1">Yaaay! You clicked the button!</p>
+                <button>try it</button>
+            </div>
+            <div class="hide_show">
+                <h1>.hide and .show</h1>
+                <div>
+                    <p class="hide">
+                        With no parameters, the .hide() method is the simplest way to hide an element.
+                        The matched elements will be hidden immediately, with no animation.
+                        When a duration, a plain object, or a "complete" function is provided, 
+                        .hide() becomes an animation method. The .hide() method animates the width, 
+                        height, and opacity of the matched elements simultaneously. 
+                        When these properties reach 0, the display style property is set to none to ensure 
+                        that the element no longer affects the layout of the page.
+                    </p>
+                    <p class="show">
+                        With no parameters, the .show() method is the simplest way to display an element.
+                        The matched elements will be revealed immediately, with no animation.
+                        When a duration, a plain object, or a "complete" function is provided, 
+                        .show() becomes an animation method. The .show() method animates the width, 
+                        height, and opacity of the matched elements simultaneously.
+                        If supplied, the callback is fired once the animation is complete.
+                    </p>
+                </div>
+                <img src="./images/pickle-rick.png" alt="a pic of pickle rick">
+                <button class="hide hide_btn">hide</button>
+                <button class="show show_btn">show</button>
+            </div>
+            <div class="toggle">
+                <h1>.toggle</h1>
+                <div>
+                    <p>
+                        With no parameters, the .toggle() method simply toggles the visibility of elements.
+                        The matched elements will be revealed or hidden immediately, with no animation, 
+                        by changing the CSS display property. If the element is initially displayed, it will be hidden; if hidden,
+                         it will be shown.
+                    </p>
+                    <p class=t1>
+                        Now you see Pickle Rick . . . 
+                    </p>
+                    <p class=t2>
+                        Now you don't! 
+                    </p>
+                </div>
+                <img src="./images/pickle-rick.png" alt="a pic of pickle rick">
+                <button>toggle</button>
+            </div>
+            <div class="slide_up_down">
+                <h1>.slideDown and .slideUp</h1> 
+                <p class="down">
+                    The .slideDown() method animates the height of the matched elements. 
+                    This causes lower parts of the page to slide down, making way for the revealed items.
+                    Durations are given in milliseconds; higher values indicate slower animations, not faster ones. 
+                    The strings 'fast' and 'slow' can be supplied to indicate durations of 200 and 600 milliseconds, r
+                    espectively. If any other string is supplied, or if the duration parameter is omitted, 
+                    the default duration of 400 milliseconds is used.
+                </p>
+                <p class="up">
+                    The .slideUp() method animates the height of the matched elements. 
+                    This causes lower parts of the page to slide up, appearing to conceal the items. 
+                    Once the height reaches 0 (or, if set, to whatever the CSS min-height property is), 
+                    the display style property is set to none to ensure that the element no longer affects the layout of the page.
+                    Durations are given in milliseconds; higher values indicate slower animations, not faster ones. 
+                    The strings 'fast' and 'slow' can be supplied to indicate durations of 200 and 600 milliseconds, respectively. 
+                    If any other string is supplied, or if the duration parameter is omitted, the default duration of  400 milliseconds is used.
+                </p>
+                <p class="up schwifty_txt">
+                    . . . Get Schwifty! 
+                </p>
+                <img class="schwifty" src="./images/get_schwifty.gif" alt="a pic of pickle rick">
+                <button class="down down_btn">down</button>
+                <button class="up up_btn">up</button>
+            </div>
+            <div class="slide_toggle">
+                <h1>.slideToggle</h1>
+                <p>
+                    The .slideToggle() method animates the height of the matched elements. 
+                    This causes lower parts of the page to slide up or down, appearing to reveal or 
+                    conceal the items. If the element is initially displayed, it will be hidden; if hidden, 
+                    it will be shown. The display property is saved and restored as needed. 
+                    If an element has a display value of inline, then is hidden and shown, 
+                    it will once again be displayed inline. When the height reaches 0 after a hiding animation, 
+                    the display style property is set to none to ensure that the element no longer affects the 
+                    layout of the page. Durations are given in milliseconds; higher values indicate slower 
+                    animations, not faster ones. The strings 'fast' and 'slow' can be supplied to indicate 
+                    durations of 200 and 600 milliseconds, respectively.
+                </p>
+                <img src="./images/pickle-rick.png" alt="a pic of pickle rick">
+                <button>toggle</button>
+            </div>
+            <div class="fade_in_out">
+                <h1>.fadeIn and .fadeOut</h1>
+                <p class="in">
+                    The .fadeIn() method animates the opacity of the matched elements. 
+                    It is similar to the .fadeTo() method but that method does not unhide the element and can specify 
+                    the final opacity level. Durations are given in milliseconds; higher values indicate slower 
+                    animations, not faster ones. The strings 'fast' and 'slow' can be supplied to indicate 
+                    durations of 200 and 600 milliseconds, respectively. If any other string is supplied, 
+                    or if the duration parameter is omitted, the default duration of  400 milliseconds is used.
+                </p>
+                <p class="out">
+                    The .fadeOut() method animates the opacity of the matched elements. Once the opacity reaches 0, 
+                    the display style property is set to none, so the element no longer affects the layout of the page.
+                    Durations are given in milliseconds; higher values indicate slower animations, not faster ones. 
+                    The strings 'fast' and 'slow' can be supplied to indicate durations of 200 and 600 milliseconds, 
+                    respectively. If any other string is supplied, or if the duration parameter is omitted, the default 
+                    duration of  400 milliseconds is used.
+                </p>
+                <img src="./images/pickle-rick.png" alt="a pic of pickle rick">
+                <button class="in in_btn">in</button>
+                <button class="out out_btn">out</button>
+            </div>
+            <div class="add_remove_class">
+                <h1>.addClass and .removeClass</h1>
+                <p>
+                    It's important to note that this method does not replace a class. It simply adds the class, 
+                    appending it to any which may already be assigned to the elements. Before jQuery version 1.12/2.2, 
+                    the .addClass() method manipulated the className property of the selected elements, not the class attribute. 
+                    Once the property was changed, it was the browser that updated the attribute accordingly. 
+                    An implication of this behavior was that this method only worked for documents with HTML DOM semantics (e.g., not pure XML documents).
+                    As of jQuery 1.12/2.2, this behavior is changed to improve the support for XML documents, including SVG. Starting from this version, 
+                    the class attribute is used instead. So, .addClass() can be used on XML or SVG documents.
+                    More than one class may be added at a time, separated by a space, to the set of matched elements.
+                </p>
+                <p class="remove">
+                    If a class name is included as a parameter, then only that class will be removed from the set of matched elements. 
+                    If no class names are specified in the parameter, all classes will be removed. Before jQuery version 1.12/2.2, 
+                    the .removeClass() method manipulated the className property of the selected elements, not the class attribute. 
+                    Once the property was changed, it was the browser that updated the attribute accordingly. 
+                    This means that when the class attribute was updated and the last class name was removed, 
+                    the browser might have set the attribute's value to an empty string instead of removing the attribute completely. 
+                    An implication of this behavior was that this method only worked for documents with HTML DOM semantics (e.g., not pure XML documents).
+                    As of jQuery 1.12/2.2, this behavior is changed to improve the support for XML documents, including SVG. Starting from this version, 
+                    the class attribute is used instead. So, .removeClass() can be used on XML or SVG documents.
+                    More than one class may be removed at a time, separated by a space, from the set of matched elements
+                </p>
+                <button class="add add_btn">add</button>
+                <button class="remove remove_btn">remove</button>
+            </div>
+            <div class="before_after">
+                <h1>.before and .after</h1>
+                <div>
+                    <p class="before">
+                        The .before() and .insertBefore() methods perform the same task. 
+                        The major difference is in the syntax—specifically, in the placement of the content and target. 
+                        With .before(), the content to be inserted comes from the method's argument: $(target).before(contentToBeInserted). 
+                        With .insertBefore(), on the other hand, the content precedes the method and is inserted before the target, 
+                        which in turn is passed as the .insertBefore() method's argument: $(contentToBeInserted).insertBefore(target).
+                    </p>
+                </div>
+                <button class="before_btn">before</button>
+                <button class="after_btn">after</button>
+            </div>
+            <div class="append">
+                <h1>.append</h1>
+                <div>
+                    <p>
+                        The .append() method inserts the specified content as the last child of each element in the jQuery collection 
+                        (To insert it as the first child, use .prepend()). The .append() and .appendTo() methods perform the same task. 
+                        The major difference is in the syntax-specifically, in the placement of the content and target. With .append(), 
+                        the selector expression preceding the method is the container into which the content is inserted. With .appendTo(), 
+                        on the other hand, the content precedes the method, either as a selector expression or as markup created on the fly, 
+                        and it is inserted into the target container.
+                    </p>
+                </div>
+                <button>append</button>
+            </div>
+            <div class="html">
+                <h1>.html</h1>
+                <div>
+                    <p>
+                        In an HTML document, .html() can be used to get the contents of any element. 
+                        If the selector expression matches more than one element, only the first match will have 
+                        its HTML content returned.
+                    </p>
+                    <p>
+                        When .html() is used to set an element's content, any content that was in that element is 
+                        completely replaced by the new content. Additionally, jQuery removes other constructs such as 
+                        data and event handlers from child elements before replacing those elements with the new content.
+                    </p>
+                </div>
+                <button>try it</button>
+            </div>
+            <div class="attr">
+                <h1>.attr</h1>
+                <div>
+                    <p testing="this is a test attribute">
+                        The .attr() method gets the attribute value for only the first element in the matched set. 
+                        To get the value for each element individually, use a looping construct such as jQuery's .each() 
+                        or .map() method.
+                    </p>
+                </div>
+                <button>try it</button>
+            </div>
+            <div class="val">
+                <h1>.val</h1>
+                <p>
+                    The .val() method is primarily used to get the values of form elements such as input, 
+                    select and textarea. When called on an empty collection, it returns undefined.
+                    When the first element in the collection is a select-multiple (i.e., a select element with 
+                    the multiple attribute set), .val() returns an array containing the value of each selected option.
+                </p>
+                <p class='val_txt'>Single: ,  Multiple:</p>
+                <select id="single">
+                    <option>Hamberger</option>
+                    <option>Cheeseberger</option>
+                </select>
+                       
+                <select id="multiple" multiple="multiple">
+                    <option selected="selected">Fish Tacos</option>
+                    <option>Pho</option>
+                    <option selected="selected">Gyros</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
