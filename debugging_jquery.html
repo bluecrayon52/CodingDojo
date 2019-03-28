@@ -4,29 +4,30 @@
 	<link rel="stylesheet" type="text/css" href="debugging_jquery.css">
 	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
 	<script type="text/javascript">
-	
-			$('p, h3, li').hoverfunction(){
+		$(document).ready(function (){
+			$('p, h3, li').hover(function (){
 				$(this).css('color', 'white');
 			}, function(){
 				$(this).css('color', 'black');
 			});
 
 			$('a').click(function(){
-				alert("we don't actually serve pizza...");
+				window.alert("we don't actually serve pizza...");
 			});
 
 			$('img').click(function(){
 				$(this).slideUp();
-			);
+			});
 
 			$('h5').click(function(){
-				$('img').slide Down();
+				$('img').slideDown();
 			});
 
 			$('button').click(function(){
-				var result = $('input:checked').value()  
-				alert("Thank you for your input, we like " + result + " too!");
-			});	
+				var result = $('input:checked').val(); 
+				window.alert("Thank you for your input, we like " + result + " too!");
+			});
+		});	
 
 	</script>
 </head>
