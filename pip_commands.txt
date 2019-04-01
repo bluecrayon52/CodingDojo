@@ -1,0 +1,205 @@
+command:        source django_env/bin/activate
+output:         (django_env) prefix on terminal 
+explanation:    This command activates the virtual environment 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip install Django==1.11.9
+output: 
+                Collecting Django==1.11.9
+                Downloading https://files.pythonhosted.org/packages/c8/a6/291039f0ce4b9818e0399359866337e6dfe9c0e23d8d94f00e657edbfcd8/Django-1.11.9-py2.py3-none-any.whl (6.9MB)
+                    100% |████████████████████████████████| 7.0MB 4.9MB/s 
+                Collecting pytz (from Django==1.11.9)
+                Downloading https://files.pythonhosted.org/packages/61/28/1d3920e4d1d50b19bc5d24398a7cd85cc7b9a75a490570d5a30c57622d34/pytz-2018.9-py2.py3-none-any.whl (510kB)
+                    100% |████████████████████████████████| 512kB 7.0MB/s 
+                Installing collected packages: pytz, Django
+                Successfully installed Django-1.11.9 pytz-2018.9
+
+explanation:    This ccmmand downloaded packages from the Python Package Index (PyPI) for the python web framework Django, 
+                and the world timezones definitions library pytz.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip list
+output: 
+                Package    Version
+                ---------- -------
+                Django     1.11.9 
+                pip        19.0.3 
+                pytz       2018.9 
+                setuptools 40.8.0 
+                wheel      0.33.1 
+
+explanation:    This command lists out all of the packages currently installed in the activated virtual environment.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        deactivate 
+output:         removal of the (django_env) prefix on the terminal 
+explanation:    This command deactivates the virtual environment it is executed from
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip3 list 
+output: 
+                Package          Version   
+                ---------------- ----------
+                certifi          2019.3.9  
+                pip              19.0.3    
+                pipenv           2018.11.26
+                setuptools       40.8.0    
+                virtualenv       16.4.3    
+                virtualenv-clone 0.5.1     
+                wheel            0.33.1    
+
+explanation:    This command lists out all of the packages currently installed globally, 
+                excluding packages installed only in the virtual environment (example: Django), 
+                but including others (example: virtualenv) that are not in the virtual environment
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        source django_env/bin/activate
+output:         (django_env) prefix on terminal 
+explanation:    This command re-activates the virtual environment 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip install Django==1.11.9 
+output:         
+                Requirement already satisfied: Django==1.11.9 in ./django_env/lib/python3.7/site-packages (1.11.9)
+                Requirement already satisfied: pytz in ./django_env/lib/python3.7/site-packages (from Django==1.11.9) (2018.9)
+
+explanation:    This command terminates early after checking for the requested packages (Django and pytz) 
+                in the local site-packeges directory of the virtual environment.  Because the packages are found locally, 
+                no attempt is made to download them from the Python Package Index (PyPI)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip freeze 
+output:        
+                Django==1.11.9
+                pytz==2018.9
+
+explanation:    This command lists the dependencies for the virtual environment in the requirements format.
+                What 'pip list' also reveals is the package dependencies that pip itself needs (pip, setuptools, wheel)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command: pip freeze > requirements.txt. (from Desktop)
+output: 
+                (in requirements.txt file) 
+                Django==1.11.9
+                pytz==2018.9
+
+explanation:    This command redirects the output of the 'pip freeze' command to a file named 'requirements.txt'
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip uninstall Django
+output:         
+                Uninstalling Django-1.11.9:
+                Would remove:
+                    /Users/natharno/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/bin/django-admin
+                    /Users/natharno/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/bin/django-admin.py
+                    /Users/natharno/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/Django-1.11.9.dist-info/*
+                    /Users/natharno/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/*
+                Proceed (y/n)? y
+                Successfully uninstalled Django-1.11.9
+
+explanation:    This command finds the location of the package dependencies that will be removed and asks the user to 
+                verify before proceeding with the removal 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip show Django
+output:         null
+
+explanation:    This command shows information about one or more installed packages, but because Django has been removed
+                nothing is displayed
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+command:        pip search Flask
+output:         
+                Flask-OrientDB (0.1)         - A Flask extension for using OrientDB with Flask
+                Flask-SimpleMDE (0.3.0)      - Flask-SimpleMDE - a Flask extension for SimpleMDE
+                Flask-Pure (0.5)             - Flask-Pure - a Flask extension for Pure.css
+                Flask-AutoIndex (0.6.2)      - The mod_autoindex for Flask
+                Flask-Clearbit (0.1.0)       - Flask-Clearbit
+                Flask-FontAwesome (0.1.2)    - FontAwesome for Flask
+                Flask-Mustache (0.4.1)       - Mustache for Flask
+                Fifty-Flask (1.4.0)          - Flask enhancements.
+                Flask-Chargebee (0.0.1)      - Flask-Chargebee
+                Flask-Keen (0.1.0)           - Flask-Keen
+                Flask-NextCaller (0.1.0)     - Flask-NextCaller
+                Flask-Gears (0.2)            - Gears for Flask
+                Flask-Shopify (0.2)          - Shopify Flask
+                Flask-TaskTiger (0.0.1)      - Flask TaskTiger
+                Flask-Weixin (0.5.0)         - Weixin for Flask.
+                flask-ypaginate (0.1.3)      - Pagination for Flask
+                Flask-OAuthlib (0.9.5)       - OAuthlib for Flask
+                Flask-Intercom (0.1.0)       - Flask-Intercom
+                Flask-SPF (0.0.0)            - Flask-SPF
+                flask-toolbox (0.0.2)        - A flask toolbox.
+                Flask-Turbolinks (0.2.0)     - Turbolinks for Flask.
+                Flask-Watson (0.1.0)         - Flask-Watson
+                Flask-FileRev (0.1.0)        - Flask-FileRev
+                Flask-GripControl (0.0.1)    - Flask GripControl
+                Flask-SRI (0.1.0)            - Flask-SRI
+                flask-ws (0.0.1.0)           - Websocket for flask.
+                sockjs-flask (0.3)           - SockJs for Flask
+                Flask-Stripe (0.1.0)         - Flask-Stripe
+                Flask-Quik (0.1.1)           - Quik for Flask
+                Flask-BDEA (0.1.0)           - Flask-BDEA
+                Flask-Helper (0.19)          - Flask Helper
+                Flask-ElasticUtils (0.1.7)   - ElasticUtils for Flask
+                Flask-PubSub (0.1.0)         - Flask-PubSub
+                flask-helloworld (1.0.0)     - Flask Helloworld
+                flask-zs (0.0.16)            - A helpers for Flask.
+                flask-myapi (0.1)            - Flask-MyAPI - RESTful support library for Flask
+                Flask-Diced (0.3)            - Flask-Diced - CRUD views generator for Flask
+                Flask-GeoIP (0.1.3)          - Flask-GeoIP -------------  Simple Flask extension for pygeoip.
+                airbrake-flask (1.0.7)       - airbrake-flask - Airbrake client for Python Flask
+                Flask-RESTive (0.0.3)        - Flask RESTive is a REST API Flask extension based on Flask-RESTful & Marshmallow.
+                Flask-LoginManager (1.1.6)   - Flask-Loginmanager supports multiple roles and permissions for Flask, inspired by Flask-Login
+                Flask-FlatPagesCut (0.5.1)   - Flask-FlatPagesCut is fork Flask-FlatPages (Provides flat static pages to a Flask application)
+                flask-filters (0.3)          - The Flask Filter to use with flask-restful and Relational DB
+                flask-shell (0.1.3)          - Flask extension to improve shell command for the Flask CLI.
+                flask-stylus2css (0.1)       - A small Flask extension that adds Stylus support to Flask.
+                flask-coffee2js (0.1.2)      - A small Flask extension that adds CoffeScript support to Flask.
+                Flask-Collect (1.3.2)        - Flask-Collect -- Collect static files in Flask application
+                flask-lesscss (0.9.1)        - A small Flask extension that adds LessCSS support to Flask.
+                flask-monitor (0.2.6)        - Flask Monitor module
+                flask-dynamo (0.1.2)         - DynamoDB integration for Flask.
+                Flask-Script (2.0.6)         - Scripting support for Flask
+                flask-manager (0.0.1)        - A CRUD manager for Flask
+                flask-peewee (3.0.3)         - Peewee integration for flask
+                Flask-Extension (1.0)        - Demo for flask extension.
+                flask-blueprint (1.2.7)      - Flask blueprint generator
+                Flask-RESTify (0.1.3)        - Flask REST framework
+                flask-journey (0.1.4)        - Flask blueprint management
+                Flask-Celery (2.4.3)         - Celery integration for Flask
+                Flask-Profile (0.2)          - Flask Application Profiler
+                Flask-WebSocket (1.0)        - simple websocket for Flask
+                flask-tools (0.1.0)          - Tools for Flask application.
+                Flask-ZODB (0.1)             - Use the ZODB with Flask
+                Flask-Raptor (0.1)           - Raptor support for Flask
+                Flask-pysnow (0.1.3)         - Flask extension for pysnow
+                Flask-Wings (0.5)            - Boilerplate Flask extension.
+                flask-hsrpc (0.1.14)         - flask hsrpc plugin
+                Flask-Redislite (0.1.1)      - Using Flask with Redislite
+                flask-bluestatic (0.1.0)     - Flask BlueStatic module
+                Flask-Fulfil (0.2.1)         - Fulfil.IO for Flask Apps
+                Flask-Builder (0.9)          - Flask-application factory
+                Flask-Psycopg2 (1.3)         - postgresql adapter for Flask
+                Flask-Pigeon (0.11)          - Flask messages extension.
+                Flask-RangeRequest (0.0.0)   - Range Requests for Flask
+                Flask-RQ2 (18.3)             - A Flask extension for RQ.
+                Flask-Selfdoc (1.1.0)        - Documentation generator for flask
+                flask-simple (0.0.1)         - SimpleDB integration for Flask.
+                Flask-OAuthRes (0.2.0)       - OAuth Resource for Flask
+                Flask-pymysql (0.2.3)        - pymysql extension for Flask
+                Flask-Captain (0.1.1)        - Handle webhooks with Flask
+                Flask-Bcrypt (0.7.1)         - Brcrypt hashing for Flask.
+                flask-utils (0.1.1)          - Various Flask utilities.
+                Flask-QiniuStorage (0.9.5)   - Qiniu Storage for Flask
+                thunderdome-flask (1.0.2)    - Thunderdome Flask integration
+                Flask-Redtask (0.3.1)        - Redqueue integration for flask
+                Flask-HttpCaching (0.01)     - flask http caching
+                flask-nap (0.1)              - Flask REST Framework
+                flask-erppeek (1.0.1)        - ERPPeek Connector for Flask
+                flask-redisosgearth (0.0.2)  - Flask extension for redis
+                Flask-Formspree (0.3)        - formspree flask extension
+                Flask-Lastuser (0.3.12)      - Flask extension for Lastuser
+                Flask-Auth (0.85)            - Auth extension for Flask.
+                Flask-PyMemcache (0.0.5)     - pymemcache integration for Flask
+                flask-webpackext (1.0.0)     - Webpack integration for Flask.
+                lantern-flask (0.0.47)       - Lantern Flask Tools
+                Flask-Principal (0.4.0)      - Identity management for flask
+                Flask-qiniu (2.0.5)          - Flask Qiniu extension
+                Flask-OpenERP (0.3.1)        - OpenERP Connector for Flask
+                flask-zookeeper (0.0.8)      - Flask Zookeeper client
+                Flask-StatHat (0.1.2)        - StatHat extension for Flask
+                flask-hype (0.1.4)           - Flask extension for hype
+
+explanation: This command searches the Python Package Index (PyPI) packages whose name or summary contains 'Flask'
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
