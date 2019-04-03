@@ -1,6 +1,6 @@
 from user import User 
 
-guido = User("Guido van Rossum", "guido@python.com")
+guido = User("Guido van Rossum", "guido@python.com", 0.07, 100)
 monty = User("Monty Python", "monty@python.com")
 nate = User("Nate Dog", "nate@dog.com")
 

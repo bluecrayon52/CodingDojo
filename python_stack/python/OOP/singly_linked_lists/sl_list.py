@@ -6,8 +6,7 @@ class SList:
 
     def add_to_front(self, val):
         new_node = SLNode(val)
-        current_head = self.head
-        new_node.next = current_head
+        new_node.next = self.head
         self.head = new_node
         return self	    	
 
@@ -19,10 +18,12 @@ class SList:
             return self	     
 
     def add_to_back(self, val):
+        # empty list
         if self.head == None:	
             self.add_to_front(val)	
             return self	
 
+        # otherwise
         new_node = SLNode(val)
         runner = self.head
         while (runner.next != None):
@@ -31,16 +32,22 @@ class SList:
         return self  
     
     def remove_from_front(self):
+        # empty list
         if self.head == None:
             return self
+
+        # otherwise
         temp = self.head 
         self.head = self.head.next
         temp.next = None
         return self
 
     def remove_from_back(self):
+        # empty list
         if self.head == None: 
             return self
+        
+        # otherwise, stop runner at next to last node
         runner = self.head
         while (runner.next.next != None):
             runner = runner.next
@@ -48,7 +55,7 @@ class SList:
         return self 
 
     def remove_val(self, val):
-        # no nodes in list 
+        # empty list
         if self.head == None: 
             return self
 
@@ -56,9 +63,10 @@ class SList:
         if self.head.value == val:
             self.remove_from_front()
 
-        runner = self.head 
+        runner = self.head.next
         prev = self.head
 
+        # traverse until finding the value or reaching the last node
         while (runner.value != val and runner.next != None):
             prev = runner
             runner = runner.next
@@ -112,12 +120,13 @@ class SList:
 # create a new instance of a list
 my_list = SList()
 my_list.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").print_values()
-
+print("---Remove From Front---")
 my_list.remove_from_front().print_values()
+print("---Add To Front, Remove From Back, Add to Back---")
 my_list.add_to_front("Vacations").remove_from_back().add_to_back("needed").print_values()
-
-my_list.remove_val("Vacations").print_values().add_to_front("Cookies").print_values()
-
-my_list.insert_at("not", 5).print_values()
+print("---Remove Value, Add to Front---")
+my_list.remove_val("Vacations").add_to_front("Cookies").print_values()
+print("---Insert At---")
+my_list.insert_at("not", 2).print_values()
 
 
