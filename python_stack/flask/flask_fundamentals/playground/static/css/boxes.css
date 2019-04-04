@@ -1,0 +1,27 @@
+/* * { outline: 1px dotted red; } */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 1020px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 40px;
+}
+
+.wrap h1 {
+    text-align: center;
+}
+
+.wrap div {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    height: 200px;
+    border: solid;
+    border-color: black;
+    border-width: 5px;
+    margin: 20px;
+}
