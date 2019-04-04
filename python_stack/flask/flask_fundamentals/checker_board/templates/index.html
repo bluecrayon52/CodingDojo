@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <title>Checkers</title>
+    <style>
+        .wrap .even {
+            background-color: {{color1}};
+        }
+
+        .wrap .odd {
+            background-color: {{color2}};
+        }
+    </style>
+</head>
+<body>
+    <div class='wrap'>
+        {% for j in range(rows): %}
+            {% if j % 2 == 0 %}
+                <div class="row">
+                {% for i in range(columns): %}
+                    {% if i % 2 == 0 %}
+                    <div class="even"></div>
+                    {% else %}
+                    <div class="odd"></div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <div class="row">
+                {% for i in range(columns): %}
+                    {% if i % 2 == 0 %}
+                    <div class="odd"></div>
+                    {% else %}
+                    <div class="even"></div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

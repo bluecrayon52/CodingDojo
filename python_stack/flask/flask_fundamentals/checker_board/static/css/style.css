@@ -1,0 +1,24 @@
+/* * { outline: 1px dotted red; } */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrap {
+    margin: 0 auto;
+    /* width: 1000px; */
+    padding: 40px;
+}
+
+.row {
+    display: block;
+}
+
+.even, .odd {
+    display: inline-block;
+    vertical-align: top;
+    width: 50px;
+    height: 50px;
+    margin: -2px;
+}
+
