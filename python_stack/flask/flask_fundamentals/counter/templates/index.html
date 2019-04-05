@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Counter</title>
+</head>
+<body>
+    <div class='wrap'>
+        <h1>Counter</h1>
+        <form action='/double_count' method='post' class="row my-2 mx-0 justify-content-end">
+            <button type="submit" class="col-sm-3 mb-2 btn btn-dark" onclick="">+2</button>
+        </form>
+        <form action='/custom_count' method='post' class="row my-2 mx-0 justify-content-end">
+            <input class="col-sm-3 mx-2 form-control" type='number' placeholder="increment by..." name='custom_increment'>
+            <button type="submit" class="col-sm-3 mb-2 btn btn-dark">Submit</button>
+        </form>
+        <form action='/destroy_session' method='post' class="row my-2 mx-0 justify-content-end">
+            <button type="submit" class="col-sm-3 mb-2 btn btn-dark">Reset</button>
+        </form>
+
+        {% for x in range(count):%}
+            {% if x % 2 == 0 %}
+            <p class="alert alert-success">{{count - x}} times.</p>
+            {% else %}
+            <p class="alert alert-primary">{{count - x}} times.</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
