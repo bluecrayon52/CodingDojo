@@ -1,0 +1,11 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 900px;
+    padding: 40px;
+}

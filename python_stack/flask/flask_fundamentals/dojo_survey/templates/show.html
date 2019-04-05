@@ -1,4 +1,44 @@
-<h1>Show Page</h1>
-<h3>Info Submitted:</h3>
-<p>Name: {{name}}</p>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dojo Survey Result</title>
+</head>
+<body>
+    <div class="wrap"> 
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Submitted Info</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Name</td>
+                <td>{{name}}</td>
+            </tr>
+            <tr>
+                <td>Dojo Location</td>
+                <td>{{location}}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language</td>
+                <td>{{language}}</td>
+            </tr>
+            <tr>
+                <td>Customer Experience</td>
+                <td>{{experience}}</td>
+            </tr>
+            <tr>
+                <td>Comment</td>
+                <td>{{comment}}</td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-dark" onclick="window.history.back()">Go Back</button>
+    </div>
+</body>
+</html>
