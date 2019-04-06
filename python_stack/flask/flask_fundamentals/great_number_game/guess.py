@@ -17,19 +17,20 @@ def index():
 
 @app.route('/check_guess', methods=['POST'])
 def generate_random():
-    # correct 
-    if int(request.form['guess']) == session['random_number']:
-        session['display'] = 'right'
-    # incorrect
-    else: 
-        session['attempts'] -= 1
-
-        # too high 
-        if int(request.form['guess']) > session['random_number']:
-            session['display'] = 'wrong_high'
-        # too low
+    if request.form['guess'].isdigit(): 
+        # correct 
+        if int(request.form['guess']) == session['random_number']:
+            session['display'] = 'right'
+        # incorrect
         else: 
-            session['display'] = 'wrong_low'
+            session['attempts'] -= 1
+
+            # too high 
+            if int(request.form['guess']) > session['random_number']:
+                session['display'] = 'wrong_high'
+            # too low
+            else: 
+                session['display'] = 'wrong_low'
 
     return redirect('/')
 
