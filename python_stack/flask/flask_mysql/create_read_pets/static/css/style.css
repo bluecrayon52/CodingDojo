@@ -1,0 +1,23 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    /* outline: 1px dotted red; */
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 1000px;
+    padding: 40px;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.pets_table_holder {
+    max-height: 190px;
+    overflow-y: scroll;
+    text-align: start;
+    background-color: white;
+    
+}
+
