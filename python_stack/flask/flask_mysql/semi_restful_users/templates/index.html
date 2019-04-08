@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Users</title>
+</head>
+<body>
+    <div class='wrap'>
+        <h1 class="mb-3 mt-4">All Users</h1>
+        <hr>
+        <div class="row bg-dark text-white mx-1 pl-3">
+            <p class="col-0 pt-3">ID</p>
+            <p class="col-2 pt-3">Full Name</p>
+            <p class="col-3 pt-3">Email</p>
+            <p class="col-4 pt-3">Created At</p>
+            <p class="col-2 pt-3">Actions</p>
+        </div>
+        <div class='table_holder mx-1 mb-3 pl-2'>
+            <table class="table table-striped bg-white table-hover table-bordered text-left">
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{user['id']}}</td>
+                        <td>{{user['first_name']}} {{user['last_name']}}</td>
+                        <td>{{user['email']}}</td>
+                        <td>{{user['created_at']}}</td>
+                        <td>
+                            <a href="/users/{{user['id']}}" >Show</a>
+                            <a href="/users/{{user['id']}}/edit">Edit</a>
+                            <a href="/users/{{user['id']}}/destroy" >Delete</a>
+                    </tr> 
+                    {% endfor %}  
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <a href="/users/new" class="btn btn-dark mt-3">Add a New User</a>
+    </div>
+</body>
