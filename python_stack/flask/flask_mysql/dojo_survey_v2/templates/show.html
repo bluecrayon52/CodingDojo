@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dojo Survey Result</title>
+</head>
+<body>
+    <div class="wrap"> 
+        <h1 class="mb-4">User #{{user['id']}}</h1>
+        <hr>
+        <table class="table table-striped bg-white table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Submitted Info</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr>
+                <td>Name</td>
+                <td>{{user['name']}}</td>
+            </tr>
+            <tr>
+                <td>Dojo Location</td>
+                <td>{{user['location']}}</td>
+            </tr>
+            <tr>
+                <td>Favorite Language</td>
+                <td>{{user['language']}}</td>
+            </tr>
+            <tr>
+                <td>Comment</td>
+                <td>{{user['comment']}}</td>
+            </tr>
+        </table>
+        <hr>
+        <button type="button" class="btn btn-dark" onclick="window.history.back()">Go Back</button>
+    </div>
+</body>
+</html>
