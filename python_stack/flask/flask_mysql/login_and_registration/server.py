@@ -165,15 +165,19 @@ def login_user():
 @app.route('/success', methods=['GET']) 
 def show_success(): 
 	# use user id in session to select user info from DB
+	if 'user_id' not in session:
+		return redirect('/')
+
 	mysql = connectToMySQL('login_register')
 	query ="SELECT * FROM users WHERE id=%(id)s;"
 	data ={'id' : session['user_id']}
 	user = mysql.query_db(query, data)[0]
 	return render_template('success.html', user = user)
 
-@app.route('/logout', methods=['POST'])
+@app.route('/logout', methods=['GET'])
 def logout_user():
 	# clear session 
+	session.clear()	
 	return redirect('/')
 
 if __name__ == "__main__":
