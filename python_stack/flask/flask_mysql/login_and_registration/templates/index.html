@@ -75,7 +75,7 @@
                                 {% endif %}
                             {% endwith %}
                             {% with valid = get_flashed_messages(category_filter=["pw_valid"])[0] %}
-                            <input class="form-control {{valid}}" value="{{value}}" type='text' id="password" name='password'>
+                            <input class="form-control {{valid}}" type='text' id="password" name='password'>
                             {% endwith %}
                         </div>
                         <div class="form-group col">
@@ -88,7 +88,7 @@
                                 {% endif %}
                             {% endwith %}
                             {% with valid = get_flashed_messages(category_filter=["cpw_valid"])[0] %}
-                            <input class="form-control {{valid}}" value="{{value}}" type='text' id="confirm_password" name='confirm_password'>
+                            <input class="form-control {{valid}}" type='text' id="confirm_password" name='confirm_password'>
                             {% endwith %}
                         </div>
                         <hr>
@@ -101,15 +101,42 @@
             <div class="card border-0 ml-5">
                 <div class="card-body">
                     <h4 class="card-title">Login Here!</h4>
+                    {% with errors = get_flashed_messages(category_filter=["login_main"]) %}
+                        {% if errors %}
+                            {%- for msg in errors %}
+                                <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                            {% endfor -%}
+                        {% endif %}
+                    {% endwith %}
                     <hr>
                     <form action='/login' method='post'>
                         <div class="form-group col">
                             <label for="email">Email:</label>
-                            <input class="form-control" type='text' id="email" name='email'>
+                            {% with errors = get_flashed_messages(category_filter=["login_email"]) %}
+                                {% if errors %}
+                                    {%- for msg in errors %}
+                                        <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                                    {% endfor -%}
+                                {% endif %}
+                            {% endwith %}
+                            {% with valid = get_flashed_messages(category_filter=["login_em_valid"])[0] %}
+                            {% with value = get_flashed_messages(category_filter=["login_em_value"])[0] %}
+                            <input class="form-control {{valid}}" value="{{value}}" type='text' id="email" name='email'>
+                            {% endwith %}
+                            {% endwith %}
                         </div>
                         <div class="form-group col">
                             <label for="password">Password:</label>
-                            <input class="form-control" type='text' id="password" name='password'>
+                            {% with errors = get_flashed_messages(category_filter=["login_password"]) %}
+                                {% if errors %}
+                                    {%- for msg in errors %}
+                                        <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                                    {% endfor -%}
+                                {% endif %}
+                            {% endwith %}
+                            {% with valid = get_flashed_messages(category_filter=["login_pw_valid"])[0] %}
+                            <input class="form-control {{valid}}" type='text' id="password" name='password'>
+                            {% endwith %}
                         </div>
                         <hr>
                         <div class="row d-flex mr-1 justify-content-end">
