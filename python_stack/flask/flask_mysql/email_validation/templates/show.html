@@ -11,8 +11,9 @@
     <title>Email Results</title>
     <script type="text/javascript">
         $(document).ready(function() {
-            if ({{added}}) {
-                console.log("{{session['added']}}")
+            let messages = "{{ get_flashed_messages() }}";
+
+            if (typeof messages != 'undefined' && messages != '[]') {
                 $("#flashModal").modal();
             };
         });
