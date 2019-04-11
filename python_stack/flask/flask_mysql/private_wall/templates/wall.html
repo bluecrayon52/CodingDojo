@@ -23,7 +23,16 @@
         <div class="card-group">
             <div class="card border-0 mr-5">
                 <div class="card-body">
-                    <h4 class="card-title">Messages for You</h4>
+                    <div class="row">
+                        <h4 class="col mb-0 card-title">Messages for You</h4>
+                        {% with messages = get_flashed_messages(category_filter=["danger"]) %}
+                            {% if messages %}
+                                {%- for msg in messages %}
+                                    <small class="col-6 mt-2 text-danger">{{msg}}</small>
+                                {% endfor -%}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
                     <hr>
                     <div class="message_holder">
                         <!----- start message stream  ----->
@@ -47,14 +56,14 @@
             <div class="card border-0 mr-5">
                 <div class="card-body">
                     <div class="row">
-                    <h4 class="col mb-0 card-title">Send a Message</h4>
-                    {% with messages = get_flashed_messages(category_filter=["messages_count"]) %}
-                        {% if messages %}
-                            {%- for msg in messages %}
-                                <small class="col-7 mt-2 text-success">{{msg}}</small>
-                            {% endfor -%}
-                        {% endif %}
-                    {% endwith %}
+                        <h4 class="col mb-0 card-title">Send a Message</h4>
+                        {% with messages = get_flashed_messages(category_filter=["messages_count"]) %}
+                            {% if messages %}
+                                {%- for msg in messages %}
+                                    <small class="col-7 mt-2 text-success">{{msg}}</small>
+                                {% endfor -%}
+                            {% endif %}
+                        {% endwith %}
                     </div>
                     <hr>
                     <form action='/messages/new' method='post'>
@@ -84,6 +93,7 @@
                             {% endwith %}
                             {% with valid = get_flashed_messages(category_filter=["receiver_valid"])[0] %}
                             {% with value = get_flashed_messages(category_filter=["receiver_value"])[0] %}
+                            <p>{{value}}</p>
                             <select class="form-control {{valid}}" name="receiver">
                                 <option value=""></option>
                                 <!----- user stream  ----->

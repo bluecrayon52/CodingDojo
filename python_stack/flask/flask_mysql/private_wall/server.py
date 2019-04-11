@@ -229,8 +229,6 @@ def show_wall():
 		else:
 			msg['created_at'] = 'just now'	
 
-	
-
 	return render_template('wall.html', user = user, other_users = other_users, messages = messages)
 
 @app.route('/messages/new', methods=['POST'])
@@ -256,6 +254,7 @@ def new_message():
 	else: 
 		flash('is-valid', 'receiver_valid')
 		flash(request.form['receiver'], 'receiver_value')
+		flash('test', 'receiver_value')
 
 	if not is_valid:
 		return redirect('/wall')
@@ -275,8 +274,16 @@ def new_message():
 @app.route('/messages/<id>/delete', methods=['GET'])
 def delete_message(id):
 	mysql = connectToMySQL('private_wall')
-	query="""DELETE FROM messages WHERE id=%(id)s"""
 	data= {'id': id}
+
+	query="""SELECT to_id FROM messages WHERE id=%(id)s"""
+	to_id = mysql.query_db(query, data)
+
+	if to_id != session['user_id']:
+		flash('Danger, deletion not allowed', 'danger') 
+		return redirect('/wall')
+
+	query="""DELETE FROM messages WHERE id=%(id)s"""
 	mysql.query_db(query, data)
 	return redirect('/wall')
 	
