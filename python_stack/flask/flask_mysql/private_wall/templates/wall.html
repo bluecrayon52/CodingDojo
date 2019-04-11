@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Login Success</title>
+</head>
+<body>
+    <div class="wrap"> 
+        <div class="row">
+            <h1 class="col">CodingDojo Wall</h1>
+            <div class="col d-flex mr-1 justify-content-end">
+                <h3 class="mt-1 mr-5">Welcome, {{user['first_name']}}!</h3>
+                <a href="/logout" class="btn btn btn-dark mb-3">Logout</a>
+            </div>
+        </div>
+        <hr>
+        <div class="card-group">
+            <div class="card border-0 mr-5">
+                <div class="card-body">
+                    <h4 class="card-title">Messages for You</h4>
+                    <hr>
+                    <div class="message_holder">
+                        <!----- start message stream  ----->
+                        {% for message in messages|reverse %}
+                        <div class="alert alert-success" role="alert">
+                            <h5 class="alert-heading">From: {{message['first_name']}} {{message['last_name']}}</h5>
+                            <hr>
+                            <p>{{message['content']}}</p>
+                            <hr>
+                            <div class="row">
+                                <p class="col-9 mb-0 ">{{message['created_at']}}</p>
+                                <div class="col ml-5 d-flex justify-content-end">
+                                    <a class="ml-3" href="/messages/{{message['id']}}/delete"><img class="w-100" src="./../static/images/trash.png" alt="trash can"></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="card border-0 mr-5">
+                <div class="card-body">
+                    <div class="row">
+                    <h4 class="col mb-0 card-title">Send a Message</h4>
+                    {% with messages = get_flashed_messages(category_filter=["messages_count"]) %}
+                        {% if messages %}
+                            {%- for msg in messages %}
+                                <small class="col-7 mt-2 text-success">{{msg}}</small>
+                            {% endfor -%}
+                        {% endif %}
+                    {% endwith %}
+                    </div>
+                    <hr>
+                    <form action='/messages/new' method='post'>
+                        <div class="form-group row">
+                            <label for="content">Message:</label>
+                            {% with errors = get_flashed_messages(category_filter=["content"]) %}
+                                {% if errors %}
+                                    {%- for msg in errors %}
+                                        <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                                    {% endfor -%}
+                                {% endif %}
+                            {% endwith %}
+                            {% with valid = get_flashed_messages(category_filter=["content_valid"])[0] %}
+                            {% with value = get_flashed_messages(category_filter=["content_value"])[0] %}
+                            <textarea class="form-control {{valid}}" rows="4" type="text" name="content">{{value}}</textarea>
+                            {% endwith %}
+                            {% endwith %}
+                        </div>
+                        <div class="form-group row">
+                            <label for="receiver">Recipient:</label>
+                            {% with errors = get_flashed_messages(category_filter=["receiver"]) %}
+                                {% if errors %}
+                                    {%- for msg in errors %}
+                                        <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                                    {% endfor -%}
+                                {% endif %}
+                            {% endwith %}
+                            {% with valid = get_flashed_messages(category_filter=["receiver_valid"])[0] %}
+                            {% with value = get_flashed_messages(category_filter=["receiver_value"])[0] %}
+                            <select class="form-control {{valid}}" name="receiver">
+                                <option value=""></option>
+                                <!----- user stream  ----->
+                                {% for user in other_users%}
+                                    {% if user['id']|string == value %}
+                                    <option selected="selected" value="{{user['id']}}">{{user['first_name']}} {{user['last_name']}}</option>
+                                    {% else %}
+                                    <option value="{{user['id']}}">{{user['first_name']}} {{user['last_name']}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            {% endwith %}
+                            {% endwith %}
+                        </div>
+                        <div class="row d-flex mr-1 justify-content-end">
+                            <button type="submit" class="form-group row btn btn-success">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
