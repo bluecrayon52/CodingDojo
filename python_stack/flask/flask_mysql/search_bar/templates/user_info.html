@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>User Info</title>
+</head>
+<body>
+    <div class='wrap'>
+        <div class="row d-flex justify-content-end">
+            <a href="/users" class="col-1 justify-self-end">Home</a>
+        </div>
+        <h1 class="mb-3">User {{user['id']}}</h1>
+        <hr>
+        <table class="table table-striped bg-white table-hover table-bordered text-left">
+            <tbody>
+                <tr>
+                    <td>Full Name</td>
+                    <td>{{user['first_name']}} {{user['last_name']}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{user['email']}}</td>
+                </tr>
+                <tr>
+                    <td>Created On</td>
+                    <td>{{user['created_at']}}</td>
+                </tr>
+                <tr>
+                    <td>Last Updated On</td>
+                    <td>{{user['updated_at']}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <div class="row d-flex justify-content-end mt-5">
+            <a href="/users/{{user['id']}}/edit" class="col-1 justify-self-end">Edit</a>
+            <a href="/users/{{user['id']}}/destroy" class="col-1 justify-self-end">Delete</a>
+        </div>
+    </div>
+</body>
+</html>

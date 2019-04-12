@@ -1,0 +1,5 @@
+<ul class="ml-4 list-group">
+    {% for user in users %}
+    <a href="/users/{{user['id']}}" class="list-group-item list-group-item-action">{{user['first_name']}} {{user['last_name']}}</a>
+    {% endfor %}
+</ul>
