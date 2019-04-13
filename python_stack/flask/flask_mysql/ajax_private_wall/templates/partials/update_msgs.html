@@ -1,0 +1,14 @@
+{% for message in messages|reverse %}
+<div class="alert alert-success" role="alert">
+    <h5 class="alert-heading">From: {{message['first_name']}} {{message['last_name']}}</h5>
+    <hr>
+    <p>{{message['content']}}</p>
+    <hr>
+    <div class="row">
+        <p class="col-9 mb-0 ">{{message['created_at']}}</p>
+        <div class="col ml-5 d-flex justify-content-end">
+            <a id='del_msg_btn' class="ml-3" href="/messages/{{message['id']}}/delete"><img class="w-100" src="./../static/images/trash.png" alt="trash can"></a>
+        </div>
+    </div>
+</div>
+{% endfor %}

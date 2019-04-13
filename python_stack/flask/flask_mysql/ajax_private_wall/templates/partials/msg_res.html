@@ -1,0 +1,51 @@
+<!-- pass is_valid -->
+{% if is_valid %}
+<!-- pass other_users -->
+<div class="form-group row">
+    <label for="content">Message:</label>
+    <textarea class="form-control {{valid}}" rows="4" type="text" name="content"></textarea>
+</div>
+<div class="form-group row">
+    <label for="receiver">Recipient:</label>
+    <select class="form-control {{valid}}" name="receiver">
+        <option value=""></option>
+        <!----- user stream  ----->
+        {% for user in other_users%}
+            <option value="{{user['id']}}">{{user['first_name']}} {{user['last_name']}}</option>
+        {% endfor %}
+    </select>
+</div>
+<div class="row d-flex mr-1 justify-content-end">
+    <button type="submit" class="form-group row btn btn-success" id='new_msg_btn'>Send</button>
+</div>
+
+{% else %} 
+<!-- pass cont_error_msg,  rec_error_msg, cont_valid, rec_valid, cont_value, rec_sel, other_users -->
+<div class="form-group row">
+    <label for="content">Message:</label>
+    {% if cont_error_msg %}
+    <small class="text-danger mb-3 ml-1 row">{{cont_error_msg}}</small>
+    {% endif %}
+    <textarea class="form-control {{cont_valid}}" rows="4" type="text" name="content">{{cont_value}}</textarea>
+</div>
+<div class="form-group row">
+    <label for="receiver">Recipient:</label>
+    {% if rec_error_msg %}
+    <small class="text-danger mb-3 ml-1 row">{{rec_error_msg}}</small>
+    {% endif %}
+    <select class="form-control {{rec_valid}}" name="receiver">
+        <option value=""></option>
+        <!----- user stream  ----->
+        {% for user in other_users%}
+            {% if user['id']|string == rec_sel %}
+            <option selected="selected" value="{{user['id']}}">{{user['first_name']}} {{user['last_name']}}</option>
+            {% else %}
+            <option value="{{user['id']}}">{{user['first_name']}} {{user['last_name']}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+</div>
+<div class="row d-flex mr-1 justify-content-end">
+    <button type="submit" class="form-group row btn btn-success" id='new_msg_btn'>Send</button>
+</div>
+{% endif %}
