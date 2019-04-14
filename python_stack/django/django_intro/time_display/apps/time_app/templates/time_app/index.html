@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <title>Time App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'time_app/css/style.css' %}">
+</head>
+<body>
+    <div class="wrap">
+        <h1>The Current Time and Date</h1>
+        <h2>{{time}}</h2>
+        <img src="{% static 'time_app/images/image.jpg' %}" />
+    </div>
+    
+</body>
+</html>

@@ -1,7 +1,14 @@
 from django.shortcuts import render, HttpResponse, redirect
 
 def index(request):
-    return HttpResponse("placeholder to later display a list of all blogs")
+    context = {
+    	"name": "Alien Life Form",
+    	"favorite_color": "turquoise",
+    	"pets": ["Kitty", "Kitty", "Kitty"]
+    }
+    return render(request, 'test_app/index.html', context)
+
+    # return HttpResponse("placeholder to later display a list of all blogs")
 
 def new(request):
     return HttpResponse("placeholder to display a new form to create a new blog")
