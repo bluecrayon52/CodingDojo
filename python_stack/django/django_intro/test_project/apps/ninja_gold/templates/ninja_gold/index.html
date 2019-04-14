@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}">    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Ninja Gold</title>
+</head>
+<body>
+    <div class='wrap'>
+        <h1 class="mb-5">Your Gold: {{request.session.gold}}</h1>
+        <!-- Start of Card Deck -->
+        <div class="card-deck">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'ninja_gold/images/farm.jpeg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Farm</h5>
+                    <p class="card-text">(earn 10-20 golds)</p>
+                    <form action="/ninja_gold/process_money" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="farm" />
+                        <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'ninja_gold/images/cave.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Cave</h5>
+                    <p class="card-text">(earn 5-10 golds)</p>
+                    <form action="/ninja_gold/process_money" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="cave" />
+                        <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'ninja_gold/images/house.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">House</h5>
+                    <p class="card-text">(earn 2-5 golds)</p>
+                    <form action="/ninja_gold/process_money" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="house" />
+                        <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'ninja_gold/images/casino.jpeg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Casino</h5>
+                    <p class="card-text">(win/loose 0-50 golds)</p>
+                    <form action="/ninja_gold/process_money" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="place" value="casino" />
+                        <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
+                    </form>            
+                </div>
+            </div>
+        </div>
+        <!-- End of Card Deck  -->
+        <div class='events mt-5'>
+            {% for message in request.session.messages %}
+                {% if message.gain %}
+                <p class="alert my-auto alert-success">{{message.message}}</p>
+                {% else %}
+                <p class="alert my-auto alert-danger">{{message.message}}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- Start of Reset Nav -->
+        <div class="nav justify-content-end mt-5">
+            <a href="/ninja_gold/reset" class="btn btn-dark">Reset</a>
+        </div>
+    </div>
+</body>
+</html>
