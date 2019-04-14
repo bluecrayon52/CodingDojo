@@ -19,11 +19,12 @@
                 <div class="card-body">
                     <h5 class="card-title">Farm</h5>
                     <p class="card-text">(earn 10-20 golds)</p>
-                    <form action="/ninja_gold/process_money" method="post">
+                    <!-- <form action="/ninja_gold/process_money" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="place" value="farm" />
                         <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
-                    </form>
+                    </form> -->
+                    <a href="/ninja_gold/farm" class="btn btn-secondary">Find Gold!</a>
                 </div>
             </div>
             <div class="card">
@@ -31,11 +32,12 @@
                 <div class="card-body">
                     <h5 class="card-title">Cave</h5>
                     <p class="card-text">(earn 5-10 golds)</p>
-                    <form action="/ninja_gold/process_money" method="post">
+                    <!-- <form action="/ninja_gold/process_money" method="post">
                         {% csrf_token %}
                         <input type="hidden" name="place" value="cave" />
                         <input type="submit" class="btn btn-secondary" value="Find Gold!"/>
-                    </form>
+                    </form> -->
+                    <a href="/ninja_gold/cave" class="btn btn-secondary">Find Gold!</a>
                 </div>
             </div>
             <div class="card">
