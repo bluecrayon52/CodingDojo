@@ -77,6 +77,52 @@ const SLL = () => {
                 return false;
             }
             head = head.getNext()   
+        }, 
+        length: function(){
+            let runner = head;
+            let count = 0;
+            while (runner != null) {
+                count++;
+                runner = runner.getNext();
+            }
+            return count;
+        },
+        display: function(){
+            let arr = [];
+            let runner = head;
+            while (runner != null) {
+                arr.push(runner.getVal());
+                runner = runner.getNext();
+            }
+            return arr;
+        },
+        max: function(){
+            if (head == null) {
+                return false;
+            }
+            let runner = head.getNext();
+            let max = head.getVal();
+            while (runner != null) {
+                if (runner.getVal() > max) {
+                    max = runner.getVal();
+                }
+                runner = runner.getNext();
+            }
+            return max;
+        }, 
+        min: function(){
+            if (head == null) {
+                return false;
+            }
+            let runner = head.getNext();
+            let min = head.getVal();
+            while(runner != null) {
+                if (runner.getVal() < min){
+                    min = runner.getVal();
+                }
+                runner = runner.getNext();
+            }
+            return min;
         }
     }
 }
@@ -101,5 +147,22 @@ myList.removeFront();
 
 console.log(myList.getHead().getVal());
 
+myList.addToFront(10);
+myList.addToFront(12);
+myList.addToFront(15);
+myList.addToFront(2);
 
+console.log(myList.length());
+console.log(myList.display());
 
+console.log(myList.max());
+console.log(myList.min());
+
+let myList2 = SLL();
+
+console.log(myList2.removeFront())
+console.log(myList2.contains(7));
+console.log(myList2.length());
+console.log(myList2.display());
+console.log(myList2.max());
+console.log(myList2.min());
