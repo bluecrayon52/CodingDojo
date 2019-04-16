@@ -1,0 +1,13 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    /* outline: 1px dotted red; */
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 960px;
+    padding: 40px;
+    /* text-align: center; */
+    /* background-color: lightgrey; */
+}

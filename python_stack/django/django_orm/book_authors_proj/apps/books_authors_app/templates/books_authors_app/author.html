@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'books_authors_app/css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Author</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="row">
+            <h1 class="col">{{author.first_name}} {{author.last_name}}</h1>
+            <h1 class="col-2">ID: {{author.id}}</h1>
+        </div>
+        <hr>
+        <div class="ml-2">
+            <h2>Notes:</h2>
+            <p class="ml-2">{{author.notes}}</p>
+            <hr>
+            <h2>Books</h2>
+            <ul class="ml-4">
+            {% for book in author.books.all.values %}
+                <li>{{book.title}}</li>
+            {% endfor%}
+            </ul>
+            <hr>
+        </div>
+        <form action='/authors/{{author.id}}/add_book' method='post'>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="author">Add Book</label>
+                <select class="form-control" id="book" name="book">
+                {% for book in books %}
+                    <option value={{book.id}}>{{book.title}}</option>
+                {% endfor %}
+                </select>
+                <button type="submit" class="my-2 btn btn-secondary">Add</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

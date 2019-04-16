@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'books_authors_app/css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>All Authors</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card-group">
+            <div class="card border-0 mr-5">
+                <div class="card-body">
+                    <h4 class="card-title">Add an Author</h4>
+                    <form action='/new_author' method='post'>
+                        {% csrf_token %}
+                        <label for="first_name">First Name:</label>
+                        <input class="form-control" type='text' id="first_name" name='first_name'>
+                        <label for="last_name">Last Name:</label>
+                        <input class="form-control" type='text' id="last_name" name='last_name'>
+                        <label for="desc">Notes:</label>
+                        <textarea class="form-control" rows="4" type="text" id="notes" name="notes"></textarea>
+                        <button type="submit" class="my-2 btn btn-secondary">Add</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card border-0 mr-5">
+                <div class="card-body">
+                    <h4 class="card-title">All Authors</h4>
+                    <table class="table">
+                        <thead>
+                            <td>ID</td>
+                            <td>Name</td>
+                            <td>Action</td>
+                        </thead>
+                        {% for author in all_authors %}
+                        <tr>
+                            <td>{{author.id}}</td>
+                            <td>{{author.first_name}} {{author.last_name}}</td>
+                            <td><a href="/authors/{{author.id}}">View</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

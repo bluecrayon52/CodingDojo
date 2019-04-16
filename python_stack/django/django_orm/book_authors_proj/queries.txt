@@ -1,0 +1,438 @@
+In [3]: from apps.books_authors_app.models import *                                                                                         
+
+In [4]: Book.objects.create(title="C Sharp", desc="a book about c sharp")                                                                   
+Out[4]: Book: C Sharp
+
+In [5]: Book.objects.create(title="Java", desc="a book about java")                                                                         
+Out[5]: Book: Java
+
+In [6]: Book.objects.create(title="Python", desc="a book about python")                                                                     
+Out[6]: Book: Python
+
+In [7]: Book.objects.create(title="PHP", desc="a book about php")                                                                           
+Out[7]: Book: PHP
+
+In [8]: Book.objects.create(title="Ruby", desc="a book about Ruby")                                                                         
+Out[8]: Book: Ruby
+
+In [9]: Author.objects.create(first_name="Jane", last_name="Austen")                                                                        
+Out[9]: Author: Jane Austen
+
+In [10]: Author.objects.create(first_name="Emily", last_name="Dickinson")                                                                   
+Out[10]: Author: Emily Dickinson
+
+In [11]: Author.objects.create(first_name="Floyd", last_name="Dostoevksy")                                                                  
+Out[11]: Author: Floyd Dostoevksy
+
+In [12]: auth = Author.object.filter(first_name="Floyd")                                                                                    
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-12-d9b8aee80ef8> in <module>
+----> 1 auth = Author.object.filter(first_name="Floyd")
+
+AttributeError: type object 'Author' has no attribute 'object'
+
+In [13]: auth = Author.objects.filter(first_name="Floyd")                                                                                   
+
+In [14]: auth.first_name = "Fyodor"                                                                                                         
+
+In [15]: auth.save()                                                                                                                        
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-15-8703c6bf6625> in <module>
+----> 1 auth.save()
+
+AttributeError: 'QuerySet' object has no attribute 'save'
+
+In [16]: auth                                                                                                                               
+Out[16]: <QuerySet [Author: Floyd Dostoevksy]>
+
+In [17]: auth.first()                                                                                                                       
+Out[17]: Author: Floyd Dostoevksy
+
+In [18]: auth.first.first_name = "Fyodor"                                                                                                   
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-18-5a09705bc783> in <module>
+----> 1 auth.first.first_name = "Fyodor"
+
+AttributeError: 'method' object has no attribute 'first_name'
+
+In [19]: auth.first().first_name = "Fyodor"                                                                                                 
+
+In [20]: auth.first()                                                                                                                       
+Out[20]: Author: Floyd Dostoevksy
+
+In [21]: auth.first().save()                                                                                                                
+
+In [22]: Author.objects.value()                                                                                                             
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-22-e8c70e82a13b> in <module>
+----> 1 Author.objects.value()
+
+AttributeError: 'Manager' object has no attribute 'value'
+
+In [23]: Author.objects.all().values()                                                                                                      
+Out[23]: <QuerySet [{'id': 1, 'first_name': 'Jane', 'last_name': 'Austen', 'created_at': datetime.datetime(2019, 4, 15, 21, 56, 32, 106674, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 56, 32, 106717, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560722, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560783, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Floyd', 'last_name': 'Dostoevksy', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 23, 946166, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 1, 58, 980574, tzinfo=<UTC>)}]>
+
+In [24]: auth = Author.objects.get(id=3)                                                                                                    
+
+In [25]: auth.first_name = "Fyodor"                                                                                                         
+
+In [26]: auth                                                                                                                               
+Out[26]: Author: Fyodor Dostoevksy
+
+In [27]: auth.save()                                                                                                                        
+
+In [28]: auth = Author.objects.get(id=3)                                                                                                    
+
+In [29]: Author.objects.all().values()                                                                                                      
+Out[29]: <QuerySet [{'id': 1, 'first_name': 'Jane', 'last_name': 'Austen', 'created_at': datetime.datetime(2019, 4, 15, 21, 56, 32, 106674, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 56, 32, 106717, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560722, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560783, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 23, 946166, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 3, 44, 863010, tzinfo=<UTC>)}]>
+
+In [30]: Author.objects.create(first_name="William", last_name="Shakespeare")                                                               
+Out[30]: Author: William Shakespeare
+
+In [31]: Author.objects.create(first_name="Lau", last_name="Tzu")                                                                           
+Out[31]: Author: Lau Tzu
+
+In [32]: exit()                                                                                                                             
+(django_env) 186590cd936d:book_authors_proj natharno$ python manage.py makemigrations 
+Migrations for 'books_authors_app':
+  apps/books_authors_app/migrations/0002_author_notes.py:
+    - Add field notes to author
+(django_env) 186590cd936d:book_authors_proj natharno$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, books_authors_app, contenttypes, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying books_authors_app.0002_author_notes... OK
+(django_env) 186590cd936d:book_authors_proj natharno$ python manage.py shell
+Python 3.7.3 (default, Mar 27 2019, 09:23:39) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 7.4.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from apps.books_authors_app.models import *                                                                                         
+
+In [2]: book = Book.objects.filter(title="C Sharp").first()                                                                                 
+
+In [3]: book                                                                                                                                
+Out[3]: Book: C Sharp
+
+In [4]: book.title = "C#"                                                                                                                   
+
+In [5]: book.save()                                                                                                                         
+
+In [6]: book                                                                                                                                
+Out[6]: Book: C#
+
+In [7]: author = Author.objects.get(id=4)                                                                                                   
+
+In [8]: author.first_name = "Bill"                                                                                                          
+
+In [9]: author                                                                                                                              
+Out[9]: Author: Bill Shakespeare
+
+In [10]: author.save()                                                                                                                      
+
+In [11]: Author.objects.get(id=1).books.add(Books.objects.get(id=1))                                                                        
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-11-88ec8a604589> in <module>
+----> 1 Author.objects.get(id=1).books.add(Books.objects.get(id=1))
+
+NameError: name 'Books' is not defined
+
+In [12]: Author.objects.get(id=1).books.add(Book.objects.get(id=1))                                                                         
+
+In [13]: Author.objects.get(id=1).books.add(Book.objects.get(id=2))                                                                         
+
+In [14]: author = Author.objects.get(id=i)                                                                                                  
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-14-646f07b88993> in <module>
+----> 1 author = Author.objects.get(id=i)
+
+NameError: name 'i' is not defined
+
+In [15]: author = Author.objects.get(id=1)                                                                                                  
+
+In [16]: author                                                                                                                             
+Out[16]: Author: Jane Austen
+
+In [17]: author.books                                                                                                                       
+Out[17]: <django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager at 0x107c0e5f8>
+
+In [18]: author.books.all()                                                                                                                 
+Out[18]: <QuerySet [Book: C#, Book: Java]>
+
+In [19]: Author.objects.get(id=2).books.add(Book.objects.get(id=1))                                                                         
+
+In [20]: Author.objects.get(id=2).books.add(Book.objects.get(id=2))                                                                         
+
+In [21]: Author.objects.get(id=2).books.add(Book.objects.get(id=3))                                                                         
+
+In [22]: author = Author.objects.get(id=2)                                                                                                  
+
+In [23]: author.books.all()                                                                                                                 
+Out[23]: <QuerySet [Book: C#, Book: Java, Book: Python]>
+
+In [24]: Author.objects.get(id=3).books.add(Book.objects.get(id=4))                                                                         
+
+In [25]: Author.objects.get(id=3).books.add(Book.objects.all())                                                                             
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-25-02bb16bf1764> in <module>
+----> 1 Author.objects.get(id=3).books.add(Book.objects.all())
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py in add(self, *objs)
+    879             db = router.db_for_write(self.through, instance=self.instance)
+    880             with transaction.atomic(using=db, savepoint=False):
+--> 881                 self._add_items(self.source_field_name, self.target_field_name, *objs)
+    882 
+    883                 # If this is a symmetrical m2m relation to self, add the mirror entry in the m2m table
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py in _add_items(self, source_field_name, target_field_name, *objs)
+   1026                         .filter(**{
+   1027                             source_field_name: self.related_val[0],
+-> 1028                             '%s__in' % target_field_name: new_ids,
+   1029                         }))
+   1030                 new_ids = new_ids - set(vals)
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/query.py in filter(self, *args, **kwargs)
+    792         set.
+    793         """
+--> 794         return self._filter_or_exclude(False, *args, **kwargs)
+    795 
+    796     def exclude(self, *args, **kwargs):
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/query.py in _filter_or_exclude(self, negate, *args, **kwargs)
+    810             clone.query.add_q(~Q(*args, **kwargs))
+    811         else:
+--> 812             clone.query.add_q(Q(*args, **kwargs))
+    813         return clone
+    814 
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py in add_q(self, q_object)
+   1225         existing_inner = set(
+   1226             (a for a in self.alias_map if self.alias_map[a].join_type == INNER))
+-> 1227         clause, _ = self._add_q(q_object, self.used_aliases)
+   1228         if clause:
+   1229             self.where.add(clause, AND)
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py in _add_q(self, q_object, used_aliases, branch_negated, current_negated, allow_joins, split_subq)
+   1251                     child, can_reuse=used_aliases, branch_negated=branch_negated,
+   1252                     current_negated=current_negated, connector=connector,
+-> 1253                     allow_joins=allow_joins, split_subq=split_subq,
+   1254                 )
+   1255                 joinpromoter.add_votes(needed_inner)
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py in build_filter(self, filter_expr, branch_negated, current_negated, can_reuse, connector, allow_joins, split_subq)
+   1181             else:
+   1182                 lhs = MultiColSource(alias, targets, sources, field)
+-> 1183             condition = lookup_class(lhs, value)
+   1184             lookup_type = lookup_class.lookup_name
+   1185         else:
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/lookups.py in __init__(self, lhs, rhs)
+     17     def __init__(self, lhs, rhs):
+     18         self.lhs, self.rhs = lhs, rhs
+---> 19         self.rhs = self.get_prep_lookup()
+     20         if hasattr(self.lhs, 'get_bilateral_transforms'):
+     21             bilateral_transforms = self.lhs.get_bilateral_transforms()
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_lookups.py in get_prep_lookup(self)
+     54                 # only one as we don't get to the direct value branch otherwise.
+     55                 target_field = self.lhs.output_field.get_path_info()[-1].target_fields[-1]
+---> 56                 self.rhs = [target_field.get_prep_value(v) for v in self.rhs]
+     57         return super(RelatedIn, self).get_prep_lookup()
+     58 
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_lookups.py in <listcomp>(.0)
+     54                 # only one as we don't get to the direct value branch otherwise.
+     55                 target_field = self.lhs.output_field.get_path_info()[-1].target_fields[-1]
+---> 56                 self.rhs = [target_field.get_prep_value(v) for v in self.rhs]
+     57         return super(RelatedIn, self).get_prep_lookup()
+     58 
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/__init__.py in get_prep_value(self, value)
+    944         if value is None:
+    945             return None
+--> 946         return int(value)
+    947 
+    948     def contribute_to_class(self, cls, name, **kwargs):
+
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'QuerySet'
+
+In [26]: Author.objects.get(id=3).books.add(Book.objects.all().values())                                                                    
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-26-a36508519fa5> in <module>
+----> 1 Author.objects.get(id=3).books.add(Book.objects.all().values())
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py in add(self, *objs)
+    879             db = router.db_for_write(self.through, instance=self.instance)
+    880             with transaction.atomic(using=db, savepoint=False):
+--> 881                 self._add_items(self.source_field_name, self.target_field_name, *objs)
+    882 
+    883                 # If this is a symmetrical m2m relation to self, add the mirror entry in the m2m table
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_descriptors.py in _add_items(self, source_field_name, target_field_name, *objs)
+   1026                         .filter(**{
+   1027                             source_field_name: self.related_val[0],
+-> 1028                             '%s__in' % target_field_name: new_ids,
+   1029                         }))
+   1030                 new_ids = new_ids - set(vals)
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/query.py in filter(self, *args, **kwargs)
+    792         set.
+    793         """
+--> 794         return self._filter_or_exclude(False, *args, **kwargs)
+    795 
+    796     def exclude(self, *args, **kwargs):
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/query.py in _filter_or_exclude(self, negate, *args, **kwargs)
+    810             clone.query.add_q(~Q(*args, **kwargs))
+    811         else:
+--> 812             clone.query.add_q(Q(*args, **kwargs))
+    813         return clone
+    814 
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py in add_q(self, q_object)
+   1225         existing_inner = set(
+   1226             (a for a in self.alias_map if self.alias_map[a].join_type == INNER))
+-> 1227         clause, _ = self._add_q(q_object, self.used_aliases)
+   1228         if clause:
+   1229             self.where.add(clause, AND)
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py in _add_q(self, q_object, used_aliases, branch_negated, current_negated, allow_joins, split_subq)
+   1251                     child, can_reuse=used_aliases, branch_negated=branch_negated,
+   1252                     current_negated=current_negated, connector=connector,
+-> 1253                     allow_joins=allow_joins, split_subq=split_subq,
+   1254                 )
+   1255                 joinpromoter.add_votes(needed_inner)
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/sql/query.py in build_filter(self, filter_expr, branch_negated, current_negated, can_reuse, connector, allow_joins, split_subq)
+   1181             else:
+   1182                 lhs = MultiColSource(alias, targets, sources, field)
+-> 1183             condition = lookup_class(lhs, value)
+   1184             lookup_type = lookup_class.lookup_name
+   1185         else:
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/lookups.py in __init__(self, lhs, rhs)
+     17     def __init__(self, lhs, rhs):
+     18         self.lhs, self.rhs = lhs, rhs
+---> 19         self.rhs = self.get_prep_lookup()
+     20         if hasattr(self.lhs, 'get_bilateral_transforms'):
+     21             bilateral_transforms = self.lhs.get_bilateral_transforms()
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_lookups.py in get_prep_lookup(self)
+     54                 # only one as we don't get to the direct value branch otherwise.
+     55                 target_field = self.lhs.output_field.get_path_info()[-1].target_fields[-1]
+---> 56                 self.rhs = [target_field.get_prep_value(v) for v in self.rhs]
+     57         return super(RelatedIn, self).get_prep_lookup()
+     58 
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/related_lookups.py in <listcomp>(.0)
+     54                 # only one as we don't get to the direct value branch otherwise.
+     55                 target_field = self.lhs.output_field.get_path_info()[-1].target_fields[-1]
+---> 56                 self.rhs = [target_field.get_prep_value(v) for v in self.rhs]
+     57         return super(RelatedIn, self).get_prep_lookup()
+     58 
+
+~/Documents/workspace/github/CodingDojo/python_stack/my_environments/django_env/lib/python3.7/site-packages/django/db/models/fields/__init__.py in get_prep_value(self, value)
+    944         if value is None:
+    945             return None
+--> 946         return int(value)
+    947 
+    948     def contribute_to_class(self, cls, name, **kwargs):
+
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'QuerySet'
+
+In [27]: Author.objects.get(id=3).books.add(Book.objects.get(id=1))                                                                         
+
+In [28]: Author.objects.get(id=3).books.add(Book.objects.get(id=2))                                                                         
+
+In [29]: Author.objects.get(id=3).books.remove(Book.objects.get(id=2))                                                                      
+
+In [30]: Author.objects.get(id=3).books.remove(Book.objects.get(id=1))                                                                      
+
+In [31]: Author.objects.get(id=4).books.remove(Book.objects.get(id=1))                                                                      
+
+In [32]: Author.objects.get(id=4).books.remove(Book.objects.get(id=2))                                                                      
+
+In [33]: Author.objects.get(id=4).books.remove(Book.objects.get(id=3))                                                                      
+
+In [34]: Author.objects.get(id=4).books.remove(Book.objects.get(id=4))                                                                      
+
+In [35]: Author.objects.get(id=4).books.remove(Book.objects.get(id=5))                                                                      
+
+In [36]: auths = Book.objects.get(id=3).authors                                                                                             
+
+In [37]: auths                                                                                                                              
+Out[37]: <django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager at 0x107d1e6d8>
+
+In [38]: auths.all().values()                                                                                                               
+Out[38]: <QuerySet [{'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560722, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560783, tzinfo=<UTC>), 'notes': None}]>
+
+In [39]: Author.objects.get(id=1)                                                                                                           
+Out[39]: Author: Jane Austen
+
+In [40]: Author.objects.get(id=1).books                                                                                                     
+Out[40]: <django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager at 0x107d3c550>
+
+In [41]: Author.objects.get(id=1).books.all().values()                                                                                      
+Out[41]: <QuerySet [{'id': 1, 'title': 'C#', 'desc': 'a book about c sharp', 'created_at': datetime.datetime(2019, 4, 15, 21, 53, 56, 456559, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 7, 12, 913762, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'a book about java', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696119, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696164, tzinfo=<UTC>)}]>
+
+In [42]: Author.objects.get(id=2).books.all().values()                                                                                      
+Out[42]: <QuerySet [{'id': 1, 'title': 'C#', 'desc': 'a book about c sharp', 'created_at': datetime.datetime(2019, 4, 15, 21, 53, 56, 456559, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 7, 12, 913762, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'a book about java', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696119, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696164, tzinfo=<UTC>)}, {'id': 3, 'title': 'Python', 'desc': 'a book about python', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871242, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871298, tzinfo=<UTC>)}]>
+
+In [43]: Author.objects.get(id=3).books.all().values()                                                                                      
+Out[43]: <QuerySet [{'id': 4, 'title': 'PHP', 'desc': 'a book about php', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545385, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545428, tzinfo=<UTC>)}]>
+
+In [44]: Author.objects.get(id=3).books.add(Book.objects.get(id=3))                                                                         
+
+In [45]: Author.objects.get(id=3).books.add(Book.objects.get(id=2))                                                                         
+
+In [46]: Author.objects.get(id=3).books.add(Book.objects.get(id=1))                                                                         
+
+In [47]: Author.objects.get(id=3).books.all().values()                                                                                      
+Out[47]: <QuerySet [{'id': 1, 'title': 'C#', 'desc': 'a book about c sharp', 'created_at': datetime.datetime(2019, 4, 15, 21, 53, 56, 456559, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 7, 12, 913762, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'a book about java', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696119, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696164, tzinfo=<UTC>)}, {'id': 3, 'title': 'Python', 'desc': 'a book about python', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871242, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871298, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'a book about php', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545385, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545428, tzinfo=<UTC>)}]>
+
+In [48]: Author.objects.get(id=4).books.all().values()                                                                                      
+Out[48]: <QuerySet []>
+
+In [49]: Author.objects.get(id=4).books.all().values()                                                                                      
+Out[49]: <QuerySet []>
+
+In [50]: Author.objects.get(id=4).books.add(Book.objects.get(id=1))                                                                         
+
+In [51]: Author.objects.get(id=4).books.add(Book.objects.get(id=2))                                                                         
+
+In [52]: Author.objects.get(id=4).books.add(Book.objects.get(id=3))                                                                         
+
+In [53]: Author.objects.get(id=4).books.add(Book.objects.get(id=4))                                                                         
+
+In [54]: Author.objects.get(id=4).books.add(Book.objects.get(id=5))                                                                         
+
+In [55]: Author.objects.get(id=4).books.all().values()                                                                                      
+Out[55]: <QuerySet [{'id': 1, 'title': 'C#', 'desc': 'a book about c sharp', 'created_at': datetime.datetime(2019, 4, 15, 21, 53, 56, 456559, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 7, 12, 913762, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'a book about java', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696119, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696164, tzinfo=<UTC>)}, {'id': 3, 'title': 'Python', 'desc': 'a book about python', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871242, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871298, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'a book about php', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545385, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545428, tzinfo=<UTC>)}, {'id': 5, 'title': 'Ruby', 'desc': 'a book about Ruby', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 58, 327455, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 58, 327501, tzinfo=<UTC>)}]>
+
+In [56]: Book.objects.get(id=3).authors.all().values()                                                                                      
+Out[56]: <QuerySet [{'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560722, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 57, 1, 560783, tzinfo=<UTC>), 'notes': None}, {'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 23, 946166, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 3, 44, 863010, tzinfo=<UTC>), 'notes': None}, {'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'created_at': datetime.datetime(2019, 4, 15, 22, 4, 41, 586619, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 8, 21, 596933, tzinfo=<UTC>), 'notes': None}]>
+
+In [57]: Book.objects.get(id=3).authors.remove(Author.objects.get(id=2))                                                                    
+
+In [58]: Book.objects.get(id=3).authors.all().values()                                                                                      
+Out[58]: <QuerySet [{'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'created_at': datetime.datetime(2019, 4, 15, 21, 57, 23, 946166, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 3, 44, 863010, tzinfo=<UTC>), 'notes': None}, {'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'created_at': datetime.datetime(2019, 4, 15, 22, 4, 41, 586619, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 8, 21, 596933, tzinfo=<UTC>), 'notes': None}]>
+
+In [59]: Book.objects.get(id=2).authors.add(Author.objects.get(id=5))                                                                       
+
+In [60]: Author.objects.get(id=3)                                                                                                           
+Out[60]: Author: Fyodor Dostoevksy
+
+In [61]: Author.objects.get(id=3).books.all().values()                                                                                      
+Out[61]: <QuerySet [{'id': 1, 'title': 'C#', 'desc': 'a book about c sharp', 'created_at': datetime.datetime(2019, 4, 15, 21, 53, 56, 456559, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 7, 12, 913762, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'a book about java', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696119, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 19, 696164, tzinfo=<UTC>)}, {'id': 3, 'title': 'Python', 'desc': 'a book about python', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871242, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 32, 871298, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'a book about php', 'created_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545385, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 21, 54, 45, 545428, tzinfo=<UTC>)}]>
+
+In [62]: Book.objects.get(id=5).authors.all().values()                                                                                      
+Out[62]: <QuerySet [{'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'created_at': datetime.datetime(2019, 4, 15, 22, 4, 41, 586619, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 4, 15, 22, 8, 21, 596933, tzinfo=<UTC>), 'notes': None}]>
