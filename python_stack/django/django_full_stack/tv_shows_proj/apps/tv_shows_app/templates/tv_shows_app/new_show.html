@@ -20,12 +20,32 @@
         <form action='/shows/create' method='post'>
             {% csrf_token %}
             <label for="title">Title:</label>
+            {% for msg in messages %}
+                {% if 'title' in msg.extra_tags %}
+                    <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                {% endif %}
+            {% endfor %}
             <input class="form-control" type="text" id="title" name="title">
-            <label for="title">Network:</label>
+            <label for="network">Network:</label>
+            {% for msg in messages %}
+                {% if 'network' in msg.extra_tags %}
+                    <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                {% endif %}
+            {% endfor %}
             <input class="form-control" type="text" id="network" name="network">
-            <label for="title">Release Date:</label>
-            <input class="form-control" type="date" id="release_date" name="release_date">
+            <label for="release_date">Release Date:</label>
+            {% for msg in messages %}
+                {% if 'release_date' in msg.extra_tags %}
+                    <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                {% endif %}
+            {% endfor %}
+            <input class="form-control" type="date" value="2010-05-02" id="release_date" name="release_date">
             <label for="desc">Description:</label>
+            {% for msg in messages %}
+                {% if 'desc' in msg.extra_tags %}
+                    <small class="text-danger mb-3 ml-1 row">{{msg}}</small>
+                {% endif %}
+            {% endfor %}
             <textarea class="form-control" rows="4" type="text" id="desc" name="desc"></textarea>
             <button type="submit" class="my-2 btn btn-secondary">Create</button>
         </form>
