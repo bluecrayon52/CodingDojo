@@ -56,6 +56,18 @@ const SLL = () => {
                 head = newNode;
             }
         },
+        addBack: function(val){
+            let newNode = Node(val);
+            if (head == null) {
+               head = newNode; 
+            } else {
+                let runner = head;
+                while (runner.getNext() != null) {
+                  runner = runner.getNext();  
+                }
+                runner.setNext(newNode);
+            }
+        },
         contains: function(val){
             if (head == null) {
                 return false;
@@ -78,6 +90,19 @@ const SLL = () => {
             }
             head = head.getNext()   
         }, 
+        removeBack: function(){
+            if (head == null) {
+                return false;
+            } else if (head.getNext == null) {
+                head = null;
+            } else {
+                let runner = head;
+                while (runner.getNext().getNext() != null){
+                    runner = runner.getNext();
+                }
+                runner.setNext(null);
+            }
+        },
         length: function(){
             let runner = head;
             let count = 0;
@@ -123,6 +148,20 @@ const SLL = () => {
                 runner = runner.getNext();
             }
             return min;
+        },
+        previousPointer: function(val) {
+            if (head == null || head.getNext() == null || head.getVal() == val) {
+                return false;
+            }
+            let pointer = head;
+            while (pointer.getNext().getVal()!= val && pointer.getNext() != null) {
+                pointer = pointer.getNext();
+            }
+            if (pointer.getNext().getVal() == val) {
+                return pointer;
+            } else {
+                return false; 
+            }
         }
     }
 }
@@ -150,7 +189,7 @@ console.log(myList.getHead().getVal());
 myList.addToFront(10);
 myList.addToFront(12);
 myList.addToFront(15);
-myList.addToFront(2);
+myList.addToFront(20);
 
 console.log(myList.length());
 console.log(myList.display());
@@ -158,11 +197,13 @@ console.log(myList.display());
 console.log(myList.max());
 console.log(myList.min());
 
-let myList2 = SLL();
+myList.removeBack();
+console.log(myList.display());
+myList.addBack(18);
+console.log(myList.display());
 
-console.log(myList2.removeFront())
-console.log(myList2.contains(7));
-console.log(myList2.length());
-console.log(myList2.display());
-console.log(myList2.max());
-console.log(myList2.min());
+let prev = myList.previousPointer(myList.min());
+let min = prev.getNext();
+prev.setNext(prev.getNext().getNext());
+myList.addToFront(min.getVal());
+console.log(myList.display());
