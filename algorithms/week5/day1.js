@@ -56,7 +56,7 @@ const SLL = () => {
                 head = newNode;
             }
         },
-        addBack: function(val){
+        addToBack: function(val){
             let newNode = Node(val);
             if (head == null) {
                head = newNode; 
@@ -199,11 +199,27 @@ console.log(myList.min());
 
 myList.removeBack();
 console.log(myList.display());
-myList.addBack(18);
+myList.addToBack(18);
 console.log(myList.display());
 
+
+// add min to front using previousPointer function
 let prev = myList.previousPointer(myList.min());
 let min = prev.getNext();
 prev.setNext(prev.getNext().getNext());
 myList.addToFront(min.getVal());
-console.log(myList.display());
+console.log(`add min to front: ${myList.display()}`);
+
+// add max to back using previousPointer function 
+prev = myList.previousPointer(myList.max());
+let max = prev.getNext();
+prev.setNext(prev.getNext().getNext());
+myList.addToBack(max.getVal());
+console.log(`add max to back: ${myList.display()}`);
+
+// append a new node with a given value after another specified value
+prev = myList.previousPointer(15);
+let new_node = Node(8);
+new_node.setNext(prev.getNext().getNext());
+prev.getNext().setNext(new_node);
+console.log(`append after: ${myList.display()}`)
