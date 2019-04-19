@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'wall_app/css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Login Success</title>
+</head>
+<body>
+    <div class="wrap"> 
+        <div class="row">
+            <h1 class="col">CodingDojo Wall</h1>
+            <div class="col d-flex mr-1 justify-content-end">
+                <h3 class="mt-1 mr-5">Welcome, {{user.first_name}}!</h3>
+                <a href="/logout" class="btn btn btn-dark mb-3">Logout</a>
+            </div>
+        </div>
+        <hr>
+        <!-- End of Header -->
+        <form action='/wall/post_message' method='post'>
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="message">Post Message:</label>
+                {% for m in messages %}
+                    {% if 'message' in m.extra_tags %}
+                    <small class="text-danger mt-1 ml-2 row">{{m}}</small>
+                    {% endif %}
+                {% endfor %}
+                <textarea class="form-control" rows="4" type="text" name="message"></textarea>
+            </div>
+            <div class="row d-flex mr-1 justify-content-end">
+                <button type="submit" class="form-group row btn btn-success">Post Message</button>
+            </div>
+        </form>
+        <!-- end message form -->
+        <hr>
+        <div class="message_holder">
+            {% if posted_msgs %}
+                {% for msg in posted_msgs reversed %}
+                    <h4>{{msg.user.first_name}} {{msg.user.last_name}} - {{msg.created_at}}</h4>
+                    <p>{{msg.message}}</p>
+                    {% if msg.user.id == request.session.user_id %}
+                    <!-- delete message button -->
+                    <div class="row mx-3 d-flex justify-content-end">
+                        <a href="/wall/{{msg.id}}/delete_message" class="col-2 mt-3 btn btn-secondary">Delete Message</a>
+                    </div>
+                    {% endif %}
+                    <hr>
+                    <div class="mx-5 px-5">
+                        {% for cmnt in msg.comments.all %}
+                            <div class="row">
+                                <h5 class="col">{{cmnt.user.first_name}} {{cmnt.user.last_name}} - {{cmnt.created_at}}</h5>
+                            </div>
+                            <p>{{cmnt.comment}}</p>
+                        {% endfor %}
+                        <form action='/wall/post_comment' class="mx-5" method='post'>
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                <label for="comment">Post Comment:</label>
+                                {% for m in messages %}
+                                    {% with msg.id|stringformat:"i" as msgid_string %}
+                                    {% with "comment"|add:msgid_string as tag_var %}
+                                    {% if m.extra_tags == tag_var %}
+                                    <small class="text-danger mt-1 ml-2 row">{{m}}</small>
+                                    {% endif %}
+                                    {% endwith %}
+                                    {% endwith %}
+                                {% endfor %}
+                                <textarea class="form-control" rows="4" type="text" name="comment"></textarea>
+                                <input type="hidden" name="message_id" value="{{msg.id}}">
+                            </div>
+                            <div class="row d-flex mr-1 justify-content-end">
+                                <button type="submit" class="form-group row btn btn-success">Post Comment</button>
+                            </div>
+                        </form>
+                        <!-- end comment form -->
+                    </div>
+                <hr>
+                {% endfor %} 
+            {% endif %} 
+        </div>
+        <!-- end message holder -->
+    </div>
+</body>
+</html>
