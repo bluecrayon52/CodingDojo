@@ -45,10 +45,20 @@
                     <h4>{{msg.user.first_name}} {{msg.user.last_name}} - {{msg.created_at}}</h4>
                     <p>{{msg.message}}</p>
                     {% if msg.user.id == request.session.user_id %}
-                    <!-- delete message button -->
-                    <div class="row mx-3 d-flex justify-content-end">
-                        <a href="/wall/{{msg.id}}/delete_message" class="col-2 mt-3 btn btn-secondary">Delete Message</a>
-                    </div>
+                        {% for m in messages %}
+                            {% if 'info' in m.tags %}
+                                {% with msg.id|stringformat:"i" as msgid_string %}
+                                {% with "delete"|add:msgid_string as tag_var %}
+                                {% if tag_var in m.extra_tags %}
+                                    <!-- delete message button -->
+                                    <div class="row mx-3 d-flex justify-content-end">
+                                        <a href="/wall/{{msg.id}}/delete_message" class="col-2 mt-3 btn btn-secondary">Delete Message</a>
+                                    </div>
+                                {% endif %}
+                                {% endwith %}
+                                {% endwith %}
+                            {% endif %}      
+                        {% endfor %}
                     {% endif %}
                     <hr>
                     <div class="mx-5 px-5">

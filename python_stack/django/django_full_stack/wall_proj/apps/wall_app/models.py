@@ -23,11 +23,24 @@ class WallManager(models.Manager):
     def delete_validator(self, message_id, user_id):
         errors = {}
         message = Message.objects.get(id=message_id)
-        print('DELTA: ',relativedelta(datetime.now(timezone.utc), message.created_at).minutes)
+        delta = relativedelta(datetime.now(timezone.utc), message.created_at)
+
         if message.user.id != user_id:
             errors['delete'+message_id] = "you are not authorized to delete this message"
-        elif relativedelta(datetime.now(timezone.utc), message.created_at).minutes  > 30: 
+
+        elif delta.years > 0 or delta.days > 0 or delta.hours >0 or delta.minutes > 30: 
             errors ['delete'+message_id] = "this message is too old to delete"
+
+        return errors 
+
+    def age_validator(self, messages):
+        errors = {}
+
+        for message in messages:
+            delta = relativedelta(datetime.now(timezone.utc), message.created_at)
+            print("---------->DELTA: ", delta)
+            if delta.years  < 1 and delta.days < 1 and delta.hours < 1 and delta.minutes < 30:
+                errors ['delete'+str(message.id)] = "this message is too old to delete"
         return errors
 
 class Message(models.Model):

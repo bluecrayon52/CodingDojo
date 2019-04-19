@@ -1,17 +1,24 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-# from django.apps import apps
-# User = apps.get_model('login_reg_app', 'User')
 from apps.login_reg_app.models import User
 from .models import Message, Comment
 
 def wall(request):
     if 'user_id' not in request.session:
         return redirect("/")
+
+    msgs = Message.objects.all()
+    info = Message.objects.age_validator(msgs)
+
+    if len(info) > 0:
+        for key, value in info.items():
+            messages.info(request, value, extra_tags=key)
+
     context = {
         "user": User.objects.get(id=request.session['user_id']),
-        "posted_msgs": Message.objects.all()
+        "posted_msgs": msgs
     }
+    
     return render(request, "wall_app/wall.html", context)
 
 def post_message(request):
@@ -52,5 +59,5 @@ def delete_message(request, id):
     if len(errors) > 0:
         return redirect("/wall")
     else: 
-        message.delete()
-    return redirect("/wall")
+        Message.objects.get(id=id).delete()
+        return redirect("/wall")
