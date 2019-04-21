@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'dojo_reads_app/css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Add Book</title>
+</head>
+<body>
+    <div class="wrap">
+    <div class="row">
+            <h1 class="col-5">Bukuzie's Books</h1>
+            <div class="col d-flex mr-1 justify-content-end">
+                <h3 class="mt-1 mr-4">Welcome, {{user.first_name}}!</h3>
+                <a href="/books" class="btn btn btn-info mb-3">Home</a>
+                <a href="/logout" class="btn btn btn-info ml-3 mb-3">Logout</a>
+            </div>
+        </div>
+        <hr>
+        <h4>Add a New Book Title and a Review</h4>
+        <form class="mx-5 my-4" action='/books/add/process_review' method='post'>
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="title">Book Title:</label>
+                {% for msg in messages %}
+                    {% if 'title' in msg.extra_tags %}
+                    <small class="text-danger mt-1 ml-2 row">{{msg}}</small>
+                    {% endif %}
+                {% endfor %}
+                <input class="form-control" type='text' id="title" name='title'>
+            </div>
+            <div class="form-group row">
+                <label for="new_author">Select Author:</label>
+                {% for msg in messages %}
+                    {% if 'author' in msg.extra_tags %}
+                        <small class="text-danger mt-1 ml-2 row">{{msg}}</small>
+                    {% endif %}
+                {% endfor %}
+                <select class="form-control" id="new_author" name="new_author">
+                    <option value=""></option> 
+                    {% for auth in authors %}
+                    <option value={{auth}}>{{auth}}</option> 
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group row">
+                <label for="author">Or Add a New Author:</label>
+                <input class="form-control" type='text' id="author" name='author'>
+            </div>
+            <div class="form-group row">
+                <label for="comment">Comments:</label>
+                {% for msg in messages %}
+                    {% if 'comment' in msg.extra_tags %}
+                        <small class="text-danger mt-1 ml-2 row">{{msg}}</small>
+                    {% endif %}
+                {% endfor %}
+                <textarea type="text" rows="3" class="form-control" name="comment"></textarea>
+            </div>
+            <div class="form-group row">
+                <label class="col-1 px-0" for="rating">Rating:</label>
+                {% for msg in messages %}
+                    {% if 'rating' in msg.extra_tags %}
+                        <small class="text-danger mt-1 ml-2 row">{{msg}}</small>
+                    {% endif %}
+                {% endfor %}
+                <select class="col-1 form-control" id="rating" name="rating">
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+                <div class="col pr-0 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-info">Add Book and Review</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
