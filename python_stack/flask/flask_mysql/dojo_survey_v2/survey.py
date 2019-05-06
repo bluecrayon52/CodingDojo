@@ -51,10 +51,10 @@ def show_user(id):
 		JOIN locations ON users.location_id = locations.id 
 		JOIN languages ON users.language_id = languages.id
 		WHERE users.id=%(id)s"""
-
+ 
 	data = {'id': id}
 	user = mysql.query_db(query, data)[0]
-	mysql = connectToMySQL('dojo_survey')
+	# mysql = connectToMySQL('dojo_survey')
 
 	print('USER-------------:',user)
 	return render_template("show.html", user = user)

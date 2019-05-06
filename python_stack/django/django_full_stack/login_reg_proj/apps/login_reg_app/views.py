@@ -33,6 +33,7 @@ def login(request):
                 messages.error(request, value, extra_tags=key)
             return redirect("/")
         else:
+            user = User.objects.get(email=request.POST['email'])
             request.session['user_id'] = user.id
             return redirect("/success")
 

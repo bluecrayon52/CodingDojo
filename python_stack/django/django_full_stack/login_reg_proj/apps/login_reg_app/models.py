@@ -81,7 +81,7 @@ class UserManager(models.Manager):
         # creds 
         if is_valid:
             try:
-                user = User.objects.get(email=request.POST['email'])
+                user = User.objects.get(email=postData['email'])
             except: 
                 errors['login_main'] = "you could not be logged in"
             else: 

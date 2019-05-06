@@ -16,7 +16,6 @@ class WallManager(models.Manager):
     def comment_validator(self, postData): 
         errors = {}
         if len(postData['comment']) < 1:
-            print('(models.py) MESSAGE_ID: ',postData['message_id'])
             errors['comment'+postData['message_id']] = "comment body cannot be empty"
         return errors
     
