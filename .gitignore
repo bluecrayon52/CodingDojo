@@ -1,5 +1,7 @@
 python_stack/my_environments/**
 
+node_modules/
+
 # Django #
 *.log
 *.pot
