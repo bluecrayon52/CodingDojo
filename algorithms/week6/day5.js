@@ -21,7 +21,9 @@
             }
        }
        
+       // loop through ignoring ends as no water can stand on them
        for (let i = 1; i < arr.length - 1; i++) {
+           
             // if to the right of max 
             if (i > global_max.index) {
                 // find local max to the right if not yet set or hit
@@ -39,7 +41,8 @@
                 if (arr[i] < local_max.value) {
                     total_water += local_max.value - arr[i]; 
                 }
-            // we are to the left of global max
+
+            // if to the left of global max
             } else if ( i < global_max.index) {
                 // find local max if going down hill and local max is overtaken 
                 if (arr[i - 1] > arr[i] && arr[i - 1] > local_max.value) {
