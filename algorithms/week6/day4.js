@@ -99,7 +99,6 @@ let missingVal2 = (arr) => {
         } else {
             posTotal = posHigh*(posHigh + 1) / 2;
         }
-
         if (posTotal) {
             // subtract positive sum from positive total 
             let missing = posTotal - posSum;
@@ -109,13 +108,12 @@ let missingVal2 = (arr) => {
             }
         }
     }
-
     // return false for no missing values
     return false;
 }
-console.log(missingVal2([2,-4,0,-3,-2,1]));  // expect -1
+console.log(missingVal2([2,-4,0,-3,-2,1]));  // expect -1 (wrong)
 console.log(missingVal2([2,-4,-3,-2, -1, 1])); // expect 0
-console.log(missingVal2([2,-4,-3,-2, -1, 0])); // expect 1
+console.log(missingVal2([2,-4,-3,-2, -1, 0])); // expect 1 (wrong)
 console.log(missingVal2([4,3,1,0])); // expect 2
 console.log(missingVal2([4,3,1])); // expect 2
 console.log(missingVal2([-1,-4,-2,0])); // expect -3
